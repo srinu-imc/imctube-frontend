@@ -5,5 +5,5 @@
   <button class="btn btn-primary" ng-click="ytPlayer.backward(movieCtrl.movie.player)">-10s</button>
   <button class="btn btn-primary" ng-click="ytPlayer.forward(movieCtrl.movie.player)">+10s</button>
   <button class="btn btn-primary" ng-click="ytPlayer.playFromMovieStart(movieCtrl.movie.player)">movieStart</button>
-  <button class="btn btn-primary" ng-click="ytPlayer.playFromClipStart(movieCtrl.movie.player, movieCtrl.currentClip)">clipStart</button>
+  <button class="btn btn-primary" ng-disabled="!movieCtrl.clip.startTime" ng-click="ytPlayer.playFromClipStart(movieCtrl.movie.player, movieCtrl.currentClip)">clipStart</button>
 </div>
