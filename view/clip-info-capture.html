@@ -8,16 +8,16 @@
       <div class="form-group">
         <label for="startTime" class="col-md-2 control-label">Start Time</label>
         <div class="col-md-4">
-          <input type="text" class="form-control" ng-model="clip.startTime" disabled>
+          <input type="text" ng-model="movieCtrl.currentClip.startTime" class="form-control" disabled>
         </div>
-        <button type="button" class="btn btn-primary" ng-click="captureClipStartTime()">Capture</button>
+        <button type="button" class="btn btn-primary" ng-click="clipInfo.captureClipStartTime(movieCtrl.movie.player, movieCtrl.currentClip)">Capture</button>
       </div>
       <div class="form-group">
         <label for="endTime" class="col-md-2 control-label">End Time</label>
         <div class="col-md-4">
-          <input type="text" class="form-control" ng-model="clip.endTime" disabled>
+          <input type="text" ng-model="movieCtrl.currentClip.endTime" class="form-control" disabled>
         </div>
-        <button type="button" class="btn btn-primary" ng-click="captureClipEndTime()">Capture</button>
+        <button type="button" class="btn btn-primary" ng-click="clipInfo.captureClipEndTime(movieCtrl.movie.player, movieCtrl.currentClip)">Capture</button>
       </div>
     </form>
   </div>
@@ -29,7 +29,7 @@
   <div class="panel-body">
     <form class="form-group">
       <label for="description" class="col-md-2 control-label">Description</label>
-        <textarea class="col-md-10" rows=4></textarea>
+        <textarea ng-model="movieCtrl.currentClip.description" class="col-md-10" rows=4></textarea>
       </div>
     </form>
   </div>

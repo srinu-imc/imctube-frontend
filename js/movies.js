@@ -63,6 +63,13 @@
       templateUrl: 'view/clip-info-capture.html',
       controller: function() {
 
+        this.captureClipStartTime = function(player, clip) {
+          clip.startTime = player.getCurrentTime();
+        };
+
+        this.captureClipEndTime = function(player, clip) {
+          clip.endTime = player.getCurrentTime();
+        };
       },
       controllerAs: 'clipInfo'
     };
