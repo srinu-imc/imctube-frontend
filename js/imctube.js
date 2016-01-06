@@ -8,7 +8,6 @@
 
     $http.get('resources/data/movies.json').success(function(data) {
       imctube.movie = data;
-      console.log(imctube.movie);
     });
   }]);
 })();
