@@ -74,5 +74,70 @@
       controllerAs: 'clipInfo'
     };
   });
+
+  app.directive("clipActors", function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'view/clip-actors-capture.html',
+      controller: function() {
+        this.addActor = function(clip) {
+          clip.actors.push(this.newActor);
+          this.newActor = '';
+        }
+
+        this.addSinger = function(clip) {
+          clip.singers.push(this.newSinger);
+          this.newSinger = '';
+        }
+      },
+      controllerAs: 'clipActors'
+    };
+  });
+
+  app.directive("clipThumbnails", function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'view/clip-thumbnail-capture.html',
+      controller: function() {
+        this.currentPage = 0;
+        this.pageSize = 5;
+        this.totalPages = -1;
+
+        this.init = function(totalImages) {
+          var pages = totalImages / this.pageSize;
+          if (totalImages % this.pageSize === 0) {
+            this.totalPages = totalImages / this.pageSize;
+          }  else {
+            this.totalPages = totalImages/ this.pageSize + 1;
+          }
+        }
+
+        this.isFirstPage = function() {
+          return this.currentPage === 0;
+        }
+
+        this.isLastPage = function() {
+          return this.currentPage === this.totalPages - 1;
+        }
+
+        this.select = function(thumbnail, clip) {
+           clip.thumbnails.push(thumbnail);
+        }
+
+        this.nextPage = function() {
+          if(this.currentPage < this.totalPages - 1) {
+            this.currentPage += 1;
+          }
+        }
+
+        this.prevPage = function() {
+          if(this.currentPage > 0) {
+            this.currentPage -= 1;
+          }
+        }
+      },
+      controllerAs: 'clipThumbnails'
+    };
+  });
   
 })();  
