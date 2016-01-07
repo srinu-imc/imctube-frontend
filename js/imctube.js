@@ -7,7 +7,8 @@
     imctube.currentClip = {
       actors : [],
       singers : [],
-      thumbnails: []
+      thumbnails: [],
+      dialogues: [],
     };
 
     $http.get('resources/data/movies.json').success(function(data) {

@@ -139,5 +139,21 @@
       controllerAs: 'clipThumbnails'
     };
   });
+
+  app.directive("clipDialogues", function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'view/clip-dialogue-capture.html',
+      controller: function() {
+        this.dialogue = {};
+
+        this.addDialogue = function(clip) {
+          clip.dialogues.push(this.dialogue);
+          this.dialogue = {};
+        }
+      },
+      controllerAs: 'clipDialogues'
+    };
+  });
   
 })();  

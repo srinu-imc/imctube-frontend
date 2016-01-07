@@ -1,0 +1,32 @@
+<div class="panel panel-primary">
+  <div class="panel-heading"> Add dialogues of the clip</div>
+
+  <div class="panel-body">
+    <div ng-repeat="dialogue in movieCtrl.currentClip.dialogues">
+  	  <blockquote class="blockquote">
+ 	    <p>{{dialogue.text}}</p>
+  	    <footer>-{{dialogue.actor}}</footer>
+	  </blockquote>
+  	</div>
+
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label for="actor" class="col-md-2 control-label">Actor</label>
+        <div class="col-md-4">
+      	  <input type="text" class="form-control" ng-model="clipDialogues.dialogue.actor"></input>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="text" class="col-md-2 control-label">Dialogue text</label>
+        <div class="col-md-9">
+	      <textarea class="form-control" ng-model="clipDialogues.dialogue.text" rows=4></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-md-2 col-md-offset-9">
+	      <button type="button" class="btn btn-primary" ng-click="clipDialogues.addDialogue(movieCtrl.currentClip)">Add Dialogue</button> 
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
