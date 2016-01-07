@@ -1,9 +1,16 @@
-<youtube-video video-id="movieCtrl.movie.videoId" player="movieCtrl.movie.player"></youtube-video>
-<div class="btn-group">
-  <button class="btn btn-primary" ng-click="ytPlayer.pauseVideo(movieCtrl.movie.player)">pause</button>
-  <button class="btn btn-primary" ng-click="ytPlayer.playVideo(movieCtrl.movie.player)">play</button>
-  <button class="btn btn-primary" ng-click="ytPlayer.backward(movieCtrl.movie.player)">-10s</button>
-  <button class="btn btn-primary" ng-click="ytPlayer.forward(movieCtrl.movie.player)">+10s</button>
-  <button class="btn btn-primary" ng-click="ytPlayer.playFromMovieStart(movieCtrl.movie.player)">movieStart</button>
-  <button class="btn btn-primary" ng-disabled="!movieCtrl.currentClip.startTime" ng-click="ytPlayer.playFromClipStart(movieCtrl.movie.player, movieCtrl.currentClip)">clipStart</button>
+<div class="embed-responsive embed-responsive-16by9">
+  <youtube-video video-id="movieCtrl.movie.videoId" player="movieCtrl.movie.player"></youtube-video>
+</div>
+
+<div class="row">
+  <div class="container-fluid" >
+    <div class="btn-group">
+      <button class="btn btn-primary" ng-click="ytPlayer.pauseVideo(movieCtrl.movie.player)">pause</button>
+      <button class="btn btn-primary" ng-click="ytPlayer.playVideo(movieCtrl.movie.player)">play</button>
+      <button class="btn btn-primary" ng-click="ytPlayer.backward(movieCtrl.movie.player)">-10s</button>
+      <button class="btn btn-primary" ng-click="ytPlayer.forward(movieCtrl.movie.player)">+10s</button>
+      <button class="btn btn-primary" ng-click="ytPlayer.playFromMovieStart(movieCtrl.movie.player)">movieStart</button>
+      <button class="btn btn-primary" ng-disabled="!movieCtrl.currentClip.startTime" ng-click="ytPlayer.playFromClipStart(movieCtrl.movie.player, movieCtrl.currentClip)">clipStart</button>
+    </div>
+  </div>
 </div>
