@@ -5,13 +5,13 @@
   <!-- panel body goes here -->
   <div class="panel-body">
     <h4 class="text-warning nopadding">Thumbnails from movie in the order they appear in movie</h4>
-	<div class="row" ng-init="clipThumbnails.init(movieCtrl.movie.thumbnails.length)">
+	<div class="row" ng-init="clipThumbnails.init(movieCtrl.movie.thumbnailCount)">
 	<ul class="pagination">
 	  <div class="col-sm-1">
 	 	 <li class="pull-right"><a class="btn" href ng-disabled="clipThumbnails.isFirstPage()" ng-click="clipThumbnails.prevPage()">&laquo;</a></li>
 	  </div>
-	  <li class="col-sm-2 nopadding" ng-repeat="thumbnail in movieCtrl.movie.thumbnails |pagination : clipThumbnails.currentPage * clipThumbnails.pageSize | limitTo: clipThumbnails.pageSize">
-		<img class="img-responsive img-thumbnail nopadding" ng-click='clipThumbnails.select(thumbnail, movieCtrl.currentClip)' ng-src="{{thumbnail}}"></img>
+	  <li class="col-sm-2 nopadding" ng-repeat="i in [] | range: movieCtrl.movie.thumbnailCount | pagination : clipThumbnails.currentPage * clipThumbnails.pageSize | limitTo: clipThumbnails.pageSize">
+		<img class="img-responsive img-thumbnail nopadding" ng-click="clipThumbnails.select('resources/movies/' + movieCtrl.movie.videoId + '/thumbnails-' + i + '.jpeg', movieCtrl.currentClip)" ng-src="resources/movies/{{movieCtrl.movie.videoId}}/thumbnails-{{i}}.jpeg"></img>
 	  </li>
 	  <div class="col-sm-1">
 	  	<li class="pull-left"><a class="btn" href ng-disabled="clipThumbnails.isLastPage()" ng-click="clipThumbnails.nextPage()">&raquo;</a></li>
