@@ -104,6 +104,14 @@
     imctube.movie = {videoId : ''};
   });
 
+  app.controller('AddActorController', function() {
+   this.actor = {};
+
+    this.submit = function() {
+      //(TODO:vsr) Write data to backend
+      console.log(this.actor);
+    }
+  });
 
   app.filter('pagination', function() {
     return function(input, start) {
