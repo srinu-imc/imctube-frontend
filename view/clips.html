@@ -5,8 +5,9 @@
       <ul class="pagination">
         <li class="col-md-4" ng-repeat="clip in clipsCtrl.clips">
           <div class="panel panel-primary">
-            <img class="img-responsive img-thumbnail" ng-src="{{clip.thumbnail}}"></img>
-            <p class="text-primary text-small text-center">{{clip.name}}</p>
+            <a href="#clips/{{clip.id}}">
+            <img class="img-responsive img-thumbnail" ng-src="{{clip.thumbnails[0]}}"></img></a>
+            <p class="text-primary text-small text-center">{{clip.movieName}}</p>
           </div>
         </li>
       </ul>

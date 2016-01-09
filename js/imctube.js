@@ -27,6 +27,12 @@
         controllerAs: 'moviesCtrl'
       })
 
+      .when("/clips/:clipId", {
+        templateUrl: 'view/clip-player.html',
+        controller: 'ClipPlayerController',
+        controllerAs: 'clipPlayerCtrl'
+      })
+
       .when("/clips/", {
         templateUrl: 'view/clips.html',
         controller: 'ClipListController',
@@ -65,6 +71,23 @@
       imctube.clips = data;
     });
   }]);
+
+  app.controller('ClipPlayerController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
+    $scope.clips = [];
+    $scope.clipToPlay = {};
+
+    $http.get('resources/data/clip-list.json').success(function(data) {
+      $scope.clips = data;
+      $scope.clipToPlay = $scope.clips[$routeParams.clipId];
+    });
+
+    $scope.$watch('player.playVideo', function() {
+      if(angular.isDefined($scope.player) && angular.isDefined($scope.player.playVideo)) {
+        $scope.player.playVideo();
+      }
+    });
+  }]);
+
 
   app.controller('ActorListController', ['$http', function($http) {
     var imctube = this;

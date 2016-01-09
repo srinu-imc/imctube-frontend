@@ -1,121 +1,478 @@
 [
 	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-1.jpeg",
-  		"clips" : []
+    "id" : 1,
+		"movieName" : "Attarintiki Daredi",
+		"videoId" : "6yH0ViJrXhM",
+    "startTime" : 100,
+    "endTime": 200,
+		"thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-1.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-2.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-3.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
 	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-2.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-3.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-4.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-5.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-6.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-7.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-8.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-9.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-10.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-11.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-12.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-13.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-14.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-15.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-16.jpeg",
-  		"clips" : []
-	},
-	{
-		"name" : "Attarintiki Daredi", 
-  		"videoId" : "6yH0ViJrXhM",
-  		"thumbnailCount" : 5195,
-  		"thumbnail" : "resources/movies/6yH0ViJrXhM/thumbnails-17.jpeg",
-  		"clips" : []
-	}
+  {
+    "id" : 2,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 200,
+    "endTime": 300,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-2.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-3.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-4.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 3,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 300,
+    "endTime": 400,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-3.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-4.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-5.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 4,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 500,
+    "endTime": 600,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-4.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-5.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-6.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 5,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 600,
+    "endTime": 700,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-5.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-6.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-7.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 6,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 800,
+    "endTime": 900,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-6.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-7.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-8.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 7,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 900,
+    "endTime": 1000,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-7.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-8.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-9.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 8,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 1000,
+    "endTime": 1100,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-8.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-9.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-10.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 9,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 1100,
+    "endTime": 1200,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-9.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-10.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-11.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 10,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 1200,
+    "endTime": 1300,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-10.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-11.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-12.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 11,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 1300,
+    "endTime": 1400,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-11.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-12.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-13.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 12,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 1400,
+    "endTime": 1500,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-12.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-13.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-14.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 13,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 1500,
+    "endTime": 1600,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-13.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-14.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-15.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 14,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 1600,
+    "endTime": 1700,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-14.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-15.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-16.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 15,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 1700,
+    "endTime": 1800,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-15.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-16.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-17.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 16,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 1800,
+    "endTime": 1900,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-16.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-17.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-18.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  },
+  {
+    "id" : 17,
+    "movieName" : "Attarintiki Daredi",
+    "videoId" : "6yH0ViJrXhM",
+    "startTime" : 1900,
+    "endTime": 2000,
+    "thumbnails" : [
+      "resources/movies/6yH0ViJrXhM/thumbnails-17.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-18.jpeg",
+      "resources/movies/6yH0ViJrXhM/thumbnails-19.jpeg"
+    ],
+    "description": "actorA is fighting with actorB",
+    "actors" : [
+      "actorA",
+      "actorB"
+    ],
+    "singers" : [],
+    "dialogues" : [
+      {
+        "actor" : "actorA",
+        "text" : "orey"
+      },
+      {
+        "actor" : "actorB",
+        "text" : "em ra"
+      }
+    ]
+  }
 ]
