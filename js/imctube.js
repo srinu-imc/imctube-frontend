@@ -1,7 +1,90 @@
 (function() {
-  var app = angular.module('imctubeApp', ['movie-directives']);
+  var app = angular.module('imctubeApp', ['movie-directives', "ngRoute"]);
 
-  app.controller('MovieController', ['$http', function($http) {
+  app.config(function($routeProvider) {
+    $routeProvider
+      .when("/", {
+        templateUrl: 'view/actors.html',
+        controller: 'ActorListController',
+        controllerAs: 'actorsCtrl'
+      })
+
+      .when("/actors/", {
+        templateUrl: 'view/actors.html',
+        controller: 'ActorListController',
+        controllerAs: 'actorsCtrl'
+      })
+
+      .when("/singers/", {
+        templateUrl: 'view/singers.html',
+        controller: 'SingerListController',
+        controllerAs: 'singersCtrl'
+      })
+
+      .when("/movies/", {
+        templateUrl: 'view/movies.html',
+        controller: 'MovieListController',
+        controllerAs: 'moviesCtrl'
+      })
+
+      .when("/clips/", {
+        templateUrl: 'view/clips.html',
+        controller: 'ClipListController',
+        controllerAs: 'clipsCtrl'
+      })
+
+      .when("/clipify/", {
+        templateUrl: 'view/clipify.html',
+        controller: 'ClipifyController',
+        contrllerAs: 'movieCtrl'
+      })
+
+      .when("/addactor/", {
+        templateUrl: 'view/add-actor.html'
+      })
+
+      .when("/addmovie/", {
+        templateUrl: 'view/add-movie.html'
+      })
+  });
+
+  app.controller('MovieListController', ['$http', function($http) {
+    var imctube = this;
+    imctube.movies = [];
+
+    $http.get('resources/data/movie-list.json').success(function(data) {
+      imctube.movies = data;
+    });
+  }]);
+
+  app.controller('ClipListController', ['$http', function($http) {
+    var imctube = this;
+    imctube.clips = [];
+
+    $http.get('resources/data/clip-list.json').success(function(data) {
+      imctube.clips = data;
+    });
+  }]);
+
+  app.controller('ActorListController', ['$http', function($http) {
+    var imctube = this;
+    imctube.actors = [];
+
+    $http.get('resources/data/actor-list.json').success(function(data) {
+      imctube.actors = data;
+    });
+  }]);
+
+  app.controller('SingerListController', ['$http', function($http) {
+    var imctube = this;
+    imctube.singers = [];
+
+    $http.get('resources/data/singer-list.json').success(function(data) {
+      imctube.singers = data;
+    });
+  }]);
+
+  app.controller('ClipifyController', ['$http', function($http) {
     var imctube = this;
     imctube.movie = {};
     imctube.currentClip = {
@@ -15,6 +98,12 @@
       imctube.movie = data;
     });
   }]);
+
+  app.controller('AddMovieController', function() {
+    var imctube = this;
+    imctube.movie = {videoId : ''};
+  });
+
 
   app.filter('pagination', function() {
     return function(input, start) {
@@ -38,4 +127,3 @@
   });
 
 })();
-

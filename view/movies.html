@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-2 col-sm-1"></div>
+    <div class="col-md-6 col-sm-10">
+      <ul class="pagination">
+        <li class="col-md-4" ng-repeat="movie in moviesCtrl.movies">
+          <div class="panel panel-primary">
+            <img class="img-responsive img-thumbnail" ng-src="{{movie.thumbnail}}"></img>
+            <p class="text-primary text-small text-center">{{movie.name}}</p>
+          </div>
+        </li>
+      </ul>
+     </div>
+     <div class="col-md-4 col-sm-1"></div>
+  </div>
+</div>

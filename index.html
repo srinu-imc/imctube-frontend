@@ -10,11 +10,13 @@
 
     <!-- wizard css -->
     <link rel="stylesheet" href="deps/css/custom.css">
+    <link rel="stylesheet" href="deps/css/docs.min.css">
 
     <link rel="stylesheet" href="css/custom.css">
 
     <!-- Angular Dependencies -->
     <script src="deps/js/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
 
     <!-- Youtube related dependencies -->
     <script src="https://www.youtube.com/iframe_api"></script>
@@ -23,24 +25,27 @@
     <!-- imctube scripts -->
     <script src="js/imctube.js"></script>
     <script src="js/movies.js"></script>
+
   </head>
 
-  <body ng-controller="MovieController as movieCtrl">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6 nopadding">
-          <youtube-player></youtube-player>
-        </div>
-        <div class="col-md-6">
-          <clip-data></clip-data>
-        </div>
+  <body>
+
+  <div class="container-fluid">
+    <div class="col-md-1">
+      <side-bar></side-bar>
+    </div>
+    <div class="col-md-11">
+      <div class="controller">
+        <div ng-view></div>
       </div>
     </div>
-
     <!-- bootstrap related js -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="deps/js/jquery.bootstrap.wizard.min.js"></script>
+    <!--
+    <script src="deps/js/docs.min.js"></script>
+    -->
   </body>
 </html>

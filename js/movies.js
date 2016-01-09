@@ -178,5 +178,20 @@
       controllerAs: 'sideBar'
     };
   });
+
+  app.directive("movieDataCapture", function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'view/movie-data-capture.html',
+      controller : function() {
+
+        this.submit = function(data) {
+          // Callbackend to store data.
+          console.log(data);
+        }
+      },
+      controllerAs : 'movieData'
+    };
+  });
   
 })();  
