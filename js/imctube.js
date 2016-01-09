@@ -27,16 +27,22 @@
         controllerAs: 'moviesCtrl'
       })
 
-      .when("/clips/:clipId", {
-        templateUrl: 'view/clip-player.html',
-        controller: 'ClipPlayerController',
-        controllerAs: 'clipPlayerCtrl'
+      .when("/movies/:movieId/clips", {
+        templateUrl: 'view/clips.html',
+        controller: 'ClipListController',
+        controllerAs: 'clipsCtrl'
       })
 
       .when("/clips/", {
         templateUrl: 'view/clips.html',
         controller: 'ClipListController',
         controllerAs: 'clipsCtrl'
+      })
+
+      .when("/clips/:clipId", {
+        templateUrl: 'view/clip-player.html',
+        controller: 'ClipPlayerController',
+        controllerAs: 'clipPlayerCtrl'
       })
 
       .when("/clipify/", {
@@ -63,11 +69,13 @@
     });
   }]);
 
-  app.controller('ClipListController', ['$http', function($http) {
+  app.controller('ClipListController', ['$http', '$routeParams', function($http, $routeParams) {
     var imctube = this;
     imctube.clips = [];
 
     $http.get('resources/data/clip-list.json').success(function(data) {
+      console.log("movieId" + $routeParams.movieId);
+      // Query backend based on the routeParams
       imctube.clips = data;
     });
   }]);
