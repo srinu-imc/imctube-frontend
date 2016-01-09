@@ -83,6 +83,11 @@
 
     $scope.$watch('player.playVideo', function() {
       if(angular.isDefined($scope.player) && angular.isDefined($scope.player.playVideo)) {
+        $scope.player.loadVideoById({
+          'videoId': $scope.clipToPlay.videoId,
+          'startSeconds' : $scope.clipToPlay.startTime,
+          'endSeconds' : $scope.clipToPlay.endTime
+        });
         $scope.player.playVideo();
       }
     });
