@@ -1,3 +1,5 @@
 resources/movies/*
+resources/actors/*
+resources/singers/*
 tmp/*
 
