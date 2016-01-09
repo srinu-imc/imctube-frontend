@@ -155,5 +155,28 @@
       controllerAs: 'clipDialogues'
     };
   });
+
+  app.directive("sideBar", function() {
+    return {
+      restrict: 'E',
+      templateUrl: 'view/side-bar.html',
+      controller: function() {
+        this.currentTab = '';
+
+        this.init = function(currentTab) {
+          this.currentTab = currentTab;
+        };
+
+        this.setTab = function(tab) {
+          this.currentTab = tab;
+        };
+
+        this.isSet = function(tab) {
+          return this.currentTab === tab;
+        }
+      },
+      controllerAs: 'sideBar'
+    };
+  });
   
 })();  
