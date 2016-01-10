@@ -5,7 +5,7 @@
       <ul class="pagination">
         <li class="col-md-4" ng-repeat="actor in actorsCtrl.actors">
           <div class="panel panel-primary">
-            <a href="#actors/{{$index}}/movies">
+            <a href="#actors/{{actor.id}}/movies">
               <img class="img-responsive img-thumbnail" ng-src="{{actor.thumbnail}}"></img>
             </a>
             <p class="text-primary text-small text-center">{{actor.name}}</p>
