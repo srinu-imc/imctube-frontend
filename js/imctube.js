@@ -15,6 +15,18 @@
         controllerAs: 'actorsCtrl'
       })
 
+      .when("/actors/:actorId/movies", {
+        templateUrl: 'view/movies.html',
+        controller: 'MovieListController',
+        controllerAs: 'moviesCtrl'
+      })
+
+      .when("/actors/:actorId/movies/:movieId/clips", {
+        templateUrl: 'view/clips.html',
+        controller: 'ClipListController',
+        controllerAs: 'clipsCtrl'
+      })
+
       .when("/singers/", {
         templateUrl: 'view/singers.html',
         controller: 'SingerListController',
@@ -60,13 +72,23 @@
       })
   });
 
-  app.controller('MovieListController', ['$http', function($http) {
+  app.controller('MovieListController', ['$http', '$routeParams', function($http, $routeParams) {
     var imctube = this;
     imctube.movies = [];
 
     $http.get('resources/data/movie-list.json').success(function(data) {
       imctube.movies = data;
     });
+
+    imctube.getUrl = function(movieId) {
+      var url = '';
+      if(angular.isDefined($routeParams.actorId)) {
+        url =  "#actors/" + $routeParams.actorId + "/movies/" + movieId + "/clips";
+      } else {
+        url = "#movies/" + movieId + "/clips";
+      }
+      return url;
+    }
   }]);
 
   app.controller('ClipListController', ['$http', '$routeParams', function($http, $routeParams) {
@@ -74,7 +96,9 @@
     imctube.clips = [];
 
     $http.get('resources/data/clip-list.json').success(function(data) {
-      console.log("movieId" + $routeParams.movieId);
+      // TODO(vsr): Query backend
+      // console.log("movieId" + $routeParams.movieId);
+      // console.log("actorId" + $routeParams.actorId);
       // Query backend based on the routeParams
       imctube.clips = data;
     });
