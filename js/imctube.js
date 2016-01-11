@@ -58,9 +58,15 @@
       })
 
       .when("/clipify/", {
+        templateUrl: 'view/clipify-movie-list.html',
+        controller: 'ClipifyListController',
+        controllerAs: 'moviesCtrl'
+      })
+
+      .when("/clipify/:movieId", {
         templateUrl: 'view/clipify.html',
         controller: 'ClipifyController',
-        contrllerAs: 'movieCtrl'
+        controllerAs: 'movieCtrl'
       })
 
       .when("/addactor/", {
@@ -89,6 +95,15 @@
       }
       return url;
     }
+  }]);
+
+  app.controller('ClipifyListController', ['$http', '$routeParams', function($http, $routeParams) {
+    var imctube = this;
+    imctube.movies = [];
+
+    $http.get('resources/data/movie-list.json').success(function(data) {
+      imctube.movies = data;
+    });
   }]);
 
   app.controller('ClipListController', ['$http', '$routeParams', function($http, $routeParams) {
@@ -144,7 +159,7 @@
     });
   }]);
 
-  app.controller('ClipifyController', ['$http', function($http) {
+  app.controller('ClipifyController', ['$http', '$routeParams', function($http, $routeParams) {
     var imctube = this;
     imctube.movie = {};
     imctube.currentClip = {
@@ -154,8 +169,9 @@
       dialogues: [],
     };
 
-    $http.get('resources/data/movies.json').success(function(data) {
-      imctube.movie = data;
+    $http.get('resources/data/movie-list.json').success(function(data) {
+      imctube.movie = data[$routeParams.movieId];
+      console.log(imctube.movie);
     });
   }]);
 
