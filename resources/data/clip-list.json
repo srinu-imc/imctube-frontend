@@ -1,6 +1,6 @@
 [
 	{
-    "id" : 0,
+    "movieId": ""
 		"movieName" : "Attarintiki Daredi",
 		"videoId" : "6yH0ViJrXhM",
     "startTime" : 1156,
@@ -16,12 +16,10 @@
     "actors" : [
       3
     ],
-    "singers" : [],
     "dialogues" : [
     ]
 	},
   {
-    "id" : 1,
     "movieName" : "Attarintiki Daredi",
     "videoId" : "6yH0ViJrXhM",
     "startTime" : 1505,
@@ -37,12 +35,10 @@
     "actors" : [
       3
     ],
-    "singers" : [],
     "dialogues" : [
     ]
   },
   {
-    "id" : 2,
     "movieName" : "Attarintiki Daredi",
     "videoId" : "6yH0ViJrXhM",
     "startTime" : 2090,
@@ -58,12 +54,10 @@
     "actors" : [
       2
     ],
-    "singers" : [],
     "dialogues" : [
     ]
   },
   {
-    "id" : 3,
     "movieName" : "Attarintiki Daredi",
     "videoId" : "6yH0ViJrXhM",
     "startTime" : 2530,
@@ -76,12 +70,10 @@
       2,
       3
     ],
-    "singers" : [],
     "dialogues" : [
     ]
   },
   {
-    "id" : 4,
     "movieName" : "Attarintiki Daredi",
     "videoId" : "6yH0ViJrXhM",
     "startTime" : 2934,
@@ -94,12 +86,10 @@
       2,
       3
     ],
-    "singers" : [],
     "dialogues" : [
     ]
   },
   {
-    "id" : 5,
     "movieName" : "Attarintiki Daredi",
     "videoId" : "6yH0ViJrXhM",
     "startTime" : 7694,
@@ -111,12 +101,10 @@
     "actors" : [
       1
     ],
-    "singers" : [],
     "dialogues" : [
     ]
   },
   {
-    "id" : 6,
     "movieName" : "Attarintiki Daredi",
     "videoId" : "6yH0ViJrXhM",
     "startTime" : 7875,
@@ -129,12 +117,10 @@
       1,
       2
     ],
-    "singers" : [],
     "dialogues" : [
     ]
   },
   {
-    "id" : 7,
     "movieName" : "Attarintiki Daredi",
     "videoId" : "6yH0ViJrXhM",
     "startTime" : 8253,
@@ -148,7 +134,6 @@
       2,
       3
     ],
-    "singers" : [],
     "dialogues" : [
     ]
   }

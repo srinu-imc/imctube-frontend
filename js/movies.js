@@ -39,7 +39,7 @@
     return {
       restrict: 'E',
     templateUrl: 'view/clip-data-main.html',
-    controller: function() {
+    controller: function($scope, $http) {
 
       angular.element(document).ready(function() {
         $('#rootwizard').bootstrapWizard({'tabClass': 'bwizard-steps',
@@ -52,6 +52,20 @@
           }
         });
       });
+
+      $scope.submitClip =  function(movieCtrl) {
+        delete movieCtrl.currentClip.actors;
+        movieCtrl.currentClip.movieId = movieCtrl.movie.id;
+        movieCtrl.currentClip.movieName = movieCtrl.movie.name;
+
+        $http.post('/imctube/webapi/movies/' + movieCtrl.movie.id + '/clips', movieCtrl.currentClip)
+          .then(function(data) {
+            console.log("Success");
+            console.log(data.data);
+          }, function(data) {
+            console.log("Failed" + data);
+          });
+      };
     },
     controllerAs: 'clipData'
     };
@@ -179,19 +193,44 @@
     };
   });
 
-  app.directive("movieDataCapture", function() {
+  app.directive("movieDataCapture", ['$http', function($http) {
     return {
       restrict: 'E',
-      templateUrl: 'view/movie-data-capture.html',
-      controller : function() {
-
-        this.submit = function(data) {
-          // Callbackend to store data.
-          console.log(data);
-        }
-      },
-      controllerAs : 'movieData'
+      templateUrl: 'view/movie-data-capture.html'
     };
+  }]);
+
+  app.directive('typeahead', function($timeout) {
+    return {
+      restrict: 'AEC',
+      scope: {
+        items: '=',
+        prompt:'@',
+        artist: '@',
+        url: '@',
+        model: '=',
+        onSelect:'&'
+      },
+      link: function(scope,elem,attrs) {
+        scope.handleSelection = function(selectedItem) {
+          scope.model = selectedItem;
+          scope.current = 0;
+          scope.selected = true;
+          $timeout(function() {
+           scope.onSelect();
+          },200);
+        };
+        scope.current = 0;
+        scope.selected = true;
+        scope.isCurrent = function(index) {
+         return scope.current == index;
+        };
+        scope.setCurrent = function(index) {
+         scope.current = index;
+        };
+      },
+      templateUrl: 'view/typeahead.html',
+    }
   });
-  
+
 })();  

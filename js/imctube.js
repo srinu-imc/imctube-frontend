@@ -70,7 +70,9 @@
       })
 
       .when("/addactor/", {
-        templateUrl: 'view/add-actor.html'
+        templateUrl: 'view/add-actor.html',
+        controller: 'AddActorController',
+        controllerAs: 'actorCtrl'
       })
 
       .when("/addmovie/", {
@@ -82,7 +84,7 @@
     var imctube = this;
     imctube.movies = [];
 
-    $http.get('resources/data/movie-list.json').success(function(data) {
+    $http.get('/imctube/webapi/movies').success(function(data) {
       imctube.movies = data;
     });
 
@@ -101,7 +103,7 @@
     var imctube = this;
     imctube.movies = [];
 
-    $http.get('resources/data/movie-list.json').success(function(data) {
+    $http.get('/imctube/webapi/movies').success(function(data) {
       imctube.movies = data;
     });
   }]);
@@ -145,7 +147,7 @@
     var imctube = this;
     imctube.actors = [];
 
-    $http.get('resources/data/actor-list.json').success(function(data) {
+    $http.get('/imctube/webapi/artists').success(function(data) {
       imctube.actors = data;
     });
   }]);
@@ -164,30 +166,63 @@
     imctube.movie = {};
     imctube.currentClip = {
       actors : [],
-      singers : [],
+      actorIds: [],
       thumbnails: [],
       dialogues: [],
     };
 
-    $http.get('resources/data/movie-list.json').success(function(data) {
-      imctube.movie = data[$routeParams.movieId];
+    $http.get('/imctube/webapi/movies/' + $routeParams.movieId).success(function(data) {
+      imctube.movie = data;
       console.log(imctube.movie);
     });
   }]);
 
-  app.controller('AddMovieController', function() {
-    var imctube = this;
-    imctube.movie = {videoId : ''};
+  app.controller('AddMovieController', ['$http', function($http) {
+    this.movie = {videoId : ''};
+
+    this.submit = function() {
+      $http.post("/imctube/webapi/movies", this.movie)
+        .then(function(data) {
+          console.log("Success " + data);
+        }, function(data) {
+          console.log("Fail" + data);
+        });
+      console.log(this.movie);
+      this.movie = {videoId : ''};
+    }
+  }]);
+
+  app.controller('TypeAheadController', function($scope, $http) {
+    $http.get('/imctube/webapi/artists').success(function(data) {
+      $scope.items = data;
+    });
+    $scope.artist = {};
+    $scope.onItemSelectedToList = function(clip) {
+      clip.actorIds.push($scope.artist.id);
+      clip.actors.push($scope.artist);
+      $scope.artist = {};
+    }
+
+    $scope.onItemSelected = function(dialogue) {
+      dialogue.artist = $scope.artist;
+      dialogue.artistId = $scope.artist.id;
+    }
   });
 
-  app.controller('AddActorController', function() {
+  app.controller('AddActorController', ['$http', function($http) {
    this.actor = {};
 
     this.submit = function() {
-      //(TODO:vsr) Write data to backend
+      $http.post("/imctube/webapi/artists", this.actor)
+        .then(function(data) {
+          console.log("Success " + data);
+        }, function(data) {
+          console.log("Failure" + data);
+        });
+      this.actor = {};
       console.log(this.actor);
     }
-  });
+  }]);
 
   app.filter('pagination', function() {
     return function(input, start) {

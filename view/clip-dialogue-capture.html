@@ -1,19 +1,20 @@
 <div class="panel panel-primary">
   <div class="panel-heading"> Add dialogues of the clip</div>
 
-  <div class="panel-body">
+  <div class="panel-body" ng-controller='TypeAheadController'>
     <div ng-repeat="dialogue in movieCtrl.currentClip.dialogues">
       <blockquote class="blockquote">
       <p>{{dialogue.text}}</p>
-        <footer>{{dialogue.actor}}</footer>
+        <footer>{{dialogue.artist.firstName}}</footer>
     </blockquote>
     </div>
 
     <form class="form-horizontal">
       <div class="form-group">
-        <label for="actor" class="col-md-3 control-label">Actor</label>
-        <div class="col-md-4">
-          <input type="text" class="form-control" ng-model="clipDialogues.dialogue.actor"></input>
+        <div class="form-group">
+          <div class="col-md-8 col-md-offset-1">
+            <typeahead items="items" prompt="Artist name" artist="firstName" url="thumbnail" model="artist" on-select="onItemSelected(clipDialogues.dialogue)"/></typeahead>
+          </div>
         </div>
       </div>
       <div class="form-group">
@@ -24,7 +25,7 @@
       </div>
       <div class="form-group">
         <div class="col-md-2 col-md-offset-8">
-          <button type="button" class="btn btn-primary" ng-click="clipDialogues.addDialogue(movieCtrl.currentClip)">Add Dialogue</button>
+          <button type="button" class="btn btn-primary" ng-click="clipDialogues.addDialogue(movieCtrl.currentClip);artist={};">Add Dialogue</button>
         </div>
       </div>
     </form>

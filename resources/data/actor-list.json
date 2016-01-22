@@ -1,22 +1,22 @@
 [
-	{
-		"id" : 1,
-		"name" : "Brahmanandam",
-		"thumbnail" : "resources/actors/brahmanandam.jpg"
-	},
-	{
-		"id" : 2,
-		"name" : "Ali",
-		"thumbnail" : "resources/actors/ali.jpg"
-	},
-	{
-		"id" : 3,
-		"name" : "M S Narayana",
-		"thumbnail" : "resources/actors/ms_narayana.jpg"
-	},
-	{
-		"id" : 4,
-		"name" : "Venu Madhav",
-		"thumbnail" : "resources/actors/venu_madhav.jpg"
-	}
+  {
+    "firstName" : "Brahmanandam",
+    "lastName" : "Kanneganti",
+    "thumbnail" : "resources/actors/brahmanandam.jpg"
+  },
+  {
+    "firstName" : "Ali",
+    "lastName" : "Basha",
+    "thumbnail" : "resources/actors/ali.jpg"
+  },
+  {
+    "firstName" : "Surya Narayana",
+    "lastName" : "Mailavarapu",
+    "thumbnail" : "resources/actors/ms_narayana.jpg"
+  },
+  {
+    "firstName" : "Venu Madhav",
+    "lastName" : "Kunath",
+    "thumbnail" : "resources/actors/venu_madhav.jpg"
+  }
 ]

@@ -1,33 +1,19 @@
-<!-- Capture actors here -->
+<!-- Capture artists here -->
 <div class="panel panel-primary">
-  <div class="panel-heading"> Add the actors in the clip </div>
+  <div class="panel-heading"> Add the artists in the clip </div>
   <div class="panel-body">
-  <ul><li ng-repeat="actor in movieCtrl.currentClip.actors">{{actor}}</li></ul>
+  <ul>
+    <li ng-repeat="actor in movieCtrl.currentClip.actors">
+       <p>{{actor.firstName}}</p>
+    </li>
+   </ul>
   </div>
   <form class="form-horizontal">
-    <div class="form-group">
-      <div class="col-sm-6 col-sm-offset-1">
-        <input type="text" class="form-control" ng-model="clipActors.newActor"></input>
+    <div class="form-group" ng-controller='TypeAheadController'>
+      <div class="col-md-8 col-md-offset-1">
+        <typeahead items="items" prompt="Artist name" artist="firstName" url="thumbnail" model="artist" on-select="onItemSelectedToList(movieCtrl.currentClip)"/></typeahead>
       </div>
-      <button type="button" class="btn btn-primary" ng-click="clipActors.addActor(movieCtrl.currentClip)">Add Actor</button> 
     </div>
   </form>
 </div>
 <!-- end capturing actors -->
-
-<!-- Capture singers here -->
-<div class="panel panel-primary">
-  <div class="panel-heading"> Add the singers if the clip is a song </div>
-  <div class="panel-body">
-  <ul><li ng-repeat="singer in movieCtrl.currentClip.singers">{{singer}}</li></ul>
-  </div>
-  <form class="form-horizontal">
-    <div class="form-group">
-      <div class="col-sm-6 col-sm-offset-1">
-        <input type="text" class="form-control" ng-model="clipActors.newSinger"></input>
-      </div>
-      <button type="button" class="btn btn-primary" ng-click="clipActors.addSinger(movieCtrl.currentClip)">Add Singer</button> 
-    </div>
-  </form>
-</div>
-<!-- end capturing singers -->
