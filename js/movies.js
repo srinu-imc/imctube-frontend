@@ -39,12 +39,12 @@
     return {
       restrict: 'E',
     templateUrl: 'view/clip-data-main.html',
-    controller: function($scope, $http) {
+    controller: function($scope, $http, $route) {
 
       angular.element(document).ready(function() {
         $('#rootwizard').bootstrapWizard({'tabClass': 'bwizard-steps',
           'onTabClick': function(tab, navigation, index) {
-            return false;
+            console.log("In tab click");
           },
           'onNext': function(tab, navigation, index) {
           },
@@ -52,20 +52,6 @@
           }
         });
       });
-
-      $scope.submitClip =  function(movieCtrl) {
-        delete movieCtrl.currentClip.actors;
-        movieCtrl.currentClip.movieId = movieCtrl.movie.id;
-        movieCtrl.currentClip.movieName = movieCtrl.movie.name;
-
-        $http.post('/imctube/webapi/movies/' + movieCtrl.movie.id + '/clips', movieCtrl.currentClip)
-          .then(function(data) {
-            console.log("Success");
-            console.log(data.data);
-          }, function(data) {
-            console.log("Failed" + data);
-          });
-      };
     },
     controllerAs: 'clipData'
     };
@@ -97,11 +83,6 @@
         this.addActor = function(clip) {
           clip.actors.push(this.newActor);
           this.newActor = '';
-        }
-
-        this.addSinger = function(clip) {
-          clip.singers.push(this.newSinger);
-          this.newSinger = '';
         }
       },
       controllerAs: 'clipActors'

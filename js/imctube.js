@@ -27,12 +27,6 @@
         controllerAs: 'clipsCtrl'
       })
 
-      .when("/singers/", {
-        templateUrl: 'view/singers.html',
-        controller: 'SingerListController',
-        controllerAs: 'singersCtrl'
-      })
-
       .when("/movies/", {
         templateUrl: 'view/movies.html',
         controller: 'MovieListController',
@@ -152,16 +146,7 @@
     });
   }]);
 
-  app.controller('SingerListController', ['$http', function($http) {
-    var imctube = this;
-    imctube.singers = [];
-
-    $http.get('resources/data/singer-list.json').success(function(data) {
-      imctube.singers = data;
-    });
-  }]);
-
-  app.controller('ClipifyController', ['$http', '$routeParams', function($http, $routeParams) {
+  app.controller('ClipifyController', ['$http', '$routeParams', '$route', function($http, $routeParams, $route) {
     var imctube = this;
     imctube.movie = {};
     imctube.currentClip = {
@@ -175,6 +160,29 @@
       imctube.movie = data;
       console.log(imctube.movie);
     });
+
+    imctube.submitClip =  function() {
+      delete imctube.currentClip.actors;
+      imctube.currentClip.movieId = imctube.movie.id;
+      imctube.currentClip.movieName = imctube.movie.name;
+      console.log("In submitClip");
+
+      $http.post('/imctube/webapi/movies/' + imctube.movie.id + '/clips', imctube.currentClip)
+        .then(function(data) {
+          console.log("Success");
+          console.log(data.data);
+        }, function(data) {
+          console.log("Failed" + data);
+        });
+      imctube.currentClip = {
+        actors : [],
+        actorIds: [],
+        thumbnails: [],
+        dialogues: [],
+      };
+      $('#rootwizard').find("a[href*='clipInfo']").trigger('click');
+    };
+
   }]);
 
   app.controller('AddMovieController', ['$http', function($http) {
