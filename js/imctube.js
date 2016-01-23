@@ -4,24 +4,24 @@
   app.config(function($routeProvider) {
     $routeProvider
       .when("/", {
-        templateUrl: 'view/actors.html',
-        controller: 'ActorListController',
-        controllerAs: 'actorsCtrl'
+        templateUrl: 'view/artists.html',
+        controller: 'ArtistListController',
+        controllerAs: 'artistsCtrl'
       })
 
-      .when("/actors/", {
-        templateUrl: 'view/actors.html',
-        controller: 'ActorListController',
-        controllerAs: 'actorsCtrl'
+      .when("/artists/", {
+        templateUrl: 'view/artists.html',
+        controller: 'ArtistListController',
+        controllerAs: 'artistsCtrl'
       })
 
-      .when("/actors/:actorId/movies", {
+      .when("/artists/:artistId/movies", {
         templateUrl: 'view/movies.html',
         controller: 'MovieListController',
         controllerAs: 'moviesCtrl'
       })
 
-      .when("/actors/:actorId/movies/:movieId/clips", {
+      .when("/artists/:artistId/movies/:movieId/clips", {
         templateUrl: 'view/clips.html',
         controller: 'ClipListController',
         controllerAs: 'clipsCtrl'
@@ -63,10 +63,10 @@
         controllerAs: 'movieCtrl'
       })
 
-      .when("/addactor/", {
-        templateUrl: 'view/add-actor.html',
-        controller: 'AddActorController',
-        controllerAs: 'actorCtrl'
+      .when("/addartist/", {
+        templateUrl: 'view/add-artist.html',
+        controller: 'AddArtistController',
+        controllerAs: 'artistCtrl'
       })
 
       .when("/addmovie/", {
@@ -84,8 +84,8 @@
 
     imctube.getUrl = function(movieId) {
       var url = '';
-      if(angular.isDefined($routeParams.actorId)) {
-        url =  "#actors/" + $routeParams.actorId + "/movies/" + movieId + "/clips";
+      if(angular.isDefined($routeParams.artistId)) {
+        url =  "#artists/" + $routeParams.artistId + "/movies/" + movieId + "/clips";
       } else {
         url = "#movies/" + movieId + "/clips";
       }
@@ -109,7 +109,7 @@
     $http.get('resources/data/clip-list.json').success(function(data) {
       // TODO(vsr): Query backend
       // console.log("movieId" + $routeParams.movieId);
-      // console.log("actorId" + $routeParams.actorId);
+      // console.log("artistId" + $routeParams.artistId);
       // Query backend based on the routeParams
       imctube.clips = data;
     });
@@ -137,12 +137,12 @@
   }]);
 
 
-  app.controller('ActorListController', ['$http', function($http) {
+  app.controller('ArtistListController', ['$http', function($http) {
     var imctube = this;
-    imctube.actors = [];
+    imctube.artists = [];
 
     $http.get('/imctube/webapi/artists').success(function(data) {
-      imctube.actors = data;
+      imctube.artists = data;
     });
   }]);
 
@@ -150,8 +150,8 @@
     var imctube = this;
     imctube.movie = {};
     imctube.currentClip = {
-      actors : [],
-      actorIds: [],
+      artists : [],
+      artistIds: [],
       thumbnails: [],
       dialogues: [],
     };
@@ -162,7 +162,7 @@
     });
 
     imctube.submitClip =  function() {
-      delete imctube.currentClip.actors;
+      delete imctube.currentClip.artists;
       imctube.currentClip.movieId = imctube.movie.id;
       imctube.currentClip.movieName = imctube.movie.name;
       console.log("In submitClip");
@@ -175,8 +175,8 @@
           console.log("Failed" + data);
         });
       imctube.currentClip = {
-        actors : [],
-        actorIds: [],
+        artists : [],
+        artistIds: [],
         thumbnails: [],
         dialogues: [],
       };
@@ -206,8 +206,8 @@
     });
     $scope.artist = {};
     $scope.onItemSelectedToList = function(clip) {
-      clip.actorIds.push($scope.artist.id);
-      clip.actors.push($scope.artist);
+      clip.artistIds.push($scope.artist.id);
+      clip.artists.push($scope.artist);
       $scope.artist = {};
     }
 
@@ -217,18 +217,18 @@
     }
   });
 
-  app.controller('AddActorController', ['$http', function($http) {
-   this.actor = {};
+  app.controller('AddArtistController', ['$http', function($http) {
+   this.artist = {};
 
     this.submit = function() {
-      $http.post("/imctube/webapi/artists", this.actor)
+      $http.post("/imctube/webapi/artists", this.artist)
         .then(function(data) {
           console.log("Success " + data);
         }, function(data) {
           console.log("Failure" + data);
         });
-      this.actor = {};
-      console.log(this.actor);
+      this.artist = {};
+      console.log(this.artist);
     }
   }]);
 

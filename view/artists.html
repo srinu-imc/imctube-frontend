@@ -3,12 +3,12 @@
 <!--     <div class="col-md-2 col-sm-1"></div>
  -->    <div class="col-md-12">
       <ul class="pagination">
-        <li class="col-md-2 nopadding" ng-repeat="actor in actorsCtrl.actors">
+        <li class="col-md-2 nopadding" ng-repeat="artist in artistsCtrl.artists">
           <div class="panel panel-primary">
-            <a href="#actors/{{actor.id}}/movies">
-              <img class="img-responsive" ng-src="{{actor.thumbnail}}"></img>
+            <a href="#artists/{{artist.id}}/movies">
+              <img class="img-responsive" ng-src="{{artist.thumbnail}}"></img>
             </a>
-            <p class="text-primary text-small text-center">{{actor.name}}</p>
+            <p class="text-primary text-small text-center">{{artist.name}}</p>
           </div>
         </li>
       </ul>

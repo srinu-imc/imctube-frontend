@@ -75,17 +75,17 @@
     };
   });
 
-  app.directive("clipActors", function() {
+  app.directive("clipArtists", function() {
     return {
       restrict: 'E',
-      templateUrl: 'view/clip-actors-capture.html',
+      templateUrl: 'view/clip-artists-capture.html',
       controller: function() {
-        this.addActor = function(clip) {
-          clip.actors.push(this.newActor);
-          this.newActor = '';
+        this.addArtist = function(clip) {
+          clip.artists.push(this.newArtist);
+          this.newArtist = '';
         }
       },
-      controllerAs: 'clipActors'
+      controllerAs: 'clipArtists'
     };
   });
 
