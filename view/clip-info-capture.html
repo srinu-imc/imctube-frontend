@@ -1,36 +1,8 @@
-<div class="panel panel-primary">
-  <!-- panel heading goes here -->
-  <div class="panel-heading">Capture clip timings</div>
-
-  <!-- panel body goes here -->
-  <div class="panel-body">
-    <form class="form-horizontal">
-      <div class="form-group">
-        <label for="startTime" class="col-md-3 control-label">Start Time</label>
-        <div class="col-md-4">
-          <input type="text" ng-model="movieCtrl.currentClip.startTime" class="form-control" disabled>
-        </div>
-        <button type="button" class="btn btn-primary" ng-click="clipInfo.captureClipStartTime(movieCtrl.movie.player, movieCtrl.currentClip)">Capture</button>
-      </div>
-      <div class="form-group">
-        <label for="endTime" class="col-md-3 control-label">End Time</label>
-        <div class="col-md-4">
-          <input type="text" ng-model="movieCtrl.currentClip.endTime" class="form-control" disabled>
-        </div>
-        <button type="button" class="btn btn-primary" ng-click="clipInfo.captureClipEndTime(movieCtrl.movie.player, movieCtrl.currentClip)">Capture</button>
-      </div>
-    </form>
-  </div>
+<div class="row">
+  <div class="container-fluid" style="padding-bottom:20px">
+    <button type="button" class="btn btn-primary pull-left" ng-click="clipInfo.captureClipEndTime(movieCtrl.movie.player, movieCtrl.currentClip)">End clip here</button>
+    <button type="button" class="btn btn-primary pull-right" ng-click="clipInfo.toggleEditMode()">Toggle edit mode</button>
+  </div>  
 </div>
 
-<!-- capture clip information -->
-<div class="panel panel-primary">
-  <div class="panel-heading">Describe what is happening in the clip with your own words</div>
-    <div class="panel-body">
-      <form class="form-horizontal">
-        <label for="description" class="col-md-3 control-label">Description</label>
-        <textarea ng-model="movieCtrl.currentClip.description" class="col-md-9" rows=4></textarea>
-      </form>
-    </div>
-  </div>
-</div>
+<clip-dialogues></clip-dialogues>

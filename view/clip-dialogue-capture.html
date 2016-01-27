@@ -1,18 +1,14 @@
 <div class="panel panel-primary">
-  <div class="panel-heading"> Add dialogues of the clip</div>
+  <div class="panel-heading">
+    <h4>Add artists appeared in the clip and their dialogues.</h4>
+  </div>
 
   <div class="panel-body" ng-controller='TypeAheadController'>
-    <div ng-repeat="dialogue in movieCtrl.currentClip.dialogues">
-      <blockquote class="blockquote">
-      <p>{{dialogue.text}}</p>
-        <footer>{{dialogue.artist.firstName}}</footer>
-    </blockquote>
-    </div>
-
     <form class="form-horizontal">
       <div class="form-group">
         <div class="form-group">
-          <div class="col-md-8 col-md-offset-1">
+          <label for="artist" class="col-md-3 control-label">Artist</label>
+          <div class="col-md-8">
             <typeahead items="items" prompt="Artist name" artist="firstName" url="thumbnail" model="artist" on-select="onItemSelected(clipDialogues.dialogue)"/></typeahead>
           </div>
         </div>
@@ -20,14 +16,40 @@
       <div class="form-group">
         <label for="text" class="col-md-3 control-label">Dialogue text</label>
         <div class="col-md-9">
-          <textarea class="form-control" ng-model="clipDialogues.dialogue.text" rows=4></textarea>
+          <textarea class="form-control" placeholder="This can be empty if artist dont have any dialogue." ng-model="clipDialogues.dialogue.text" rows=3></textarea>
         </div>
       </div>
       <div class="form-group">
-        <div class="col-md-2 col-md-offset-8">
-          <button type="button" class="btn btn-primary" ng-click="clipDialogues.addDialogue(movieCtrl.currentClip);artist={};">Add Dialogue</button>
+        <div class="container-fluid">
+          <button type="button" class="btn btn-primary btn-block" ng-click="clipDialogues.addDialogue(movieCtrl.currentClip);artist={};">Add Dialogue</button>
         </div>
       </div>
     </form>
+
+    <div ng-hide="clipInfo.edit" ng-repeat="dialogue in movieCtrl.currentClip.dialogues">
+      <blockquote class="blockquote">
+        <p>{{dialogue.text}}</p>
+        <footer>{{dialogue.artist.firstName}}</footer>
+      </blockquote>
+    </div>
+
+    <div ng-show="clipInfo.edit" ng-repeat="dialogue in movieCtrl.currentClip.dialogues">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <div class="form-group">
+            <label for="artist" class="col-md-3 control-label">Artist</label>
+            <div class="col-md-8" ng-controller='TypeAheadController'>
+              <typeahead items="items" prompt="Artist name" artist="firstName" url="thumbnail" model="dialogue.artist" on-select="onItemSelected(clipDialogues.dialogue)"/></typeahead>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="text" class="col-md-3 control-label">Dialogue text</label>
+          <div class="col-md-9">
+            <textarea class="form-control" ng-model="dialogue.text" rows=4></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

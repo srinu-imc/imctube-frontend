@@ -78,9 +78,15 @@
     var imctube = this;
     imctube.movies = [];
 
-    $http.get('/imctube/webapi/movies').success(function(data) {
-      imctube.movies = data;
-    });
+    if(angular.isDefined($routeParams.artistId)) {
+      $http.get('/imctube/webapi/artists/' + $routeParams.artistId + '/movies').success(function(data) {
+        imctube.movies = data;
+      });
+    } else {
+      $http.get('/imctube/webapi/movies').success(function(data) {
+        imctube.movies = data;
+      });
+    } 
 
     imctube.getUrl = function(movieId) {
       var url = '';
@@ -105,23 +111,16 @@
   app.controller('ClipListController', ['$http', '$routeParams', function($http, $routeParams) {
     var imctube = this;
     imctube.clips = [];
-
-    $http.get('resources/data/clip-list.json').success(function(data) {
-      // TODO(vsr): Query backend
-      // console.log("movieId" + $routeParams.movieId);
-      // console.log("artistId" + $routeParams.artistId);
-      // Query backend based on the routeParams
+    $http.get('/imctube/webapi/artists/' + $routeParams.artistId + '/movies/' + $routeParams.movieId + '/clips').success(function(data) {
       imctube.clips = data;
     });
   }]);
 
   app.controller('ClipPlayerController', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
-    $scope.clips = [];
     $scope.clipToPlay = {};
 
-    $http.get('resources/data/clip-list.json').success(function(data) {
-      $scope.clips = data;
-      $scope.clipToPlay = $scope.clips[$routeParams.clipId];
+    $http.get('/imctube/webapi/clips/' + $routeParams.clipId).success(function(data) {
+      $scope.clipToPlay = data;
     });
 
     $scope.$watch('player.playVideo', function() {
@@ -146,7 +145,7 @@
     });
   }]);
 
-  app.controller('ClipifyController', ['$http', '$routeParams', '$route', function($http, $routeParams, $route) {
+  app.controller('ClipifyController', ['$http', '$routeParams', '$route', '$scope', function($http, $routeParams, $route, $scope) {
     var imctube = this;
     imctube.movie = {};
     imctube.currentClip = {
@@ -154,33 +153,54 @@
       artistIds: [],
       thumbnails: [],
       dialogues: [],
+      startTime: 0.01,
     };
 
     $http.get('/imctube/webapi/movies/' + $routeParams.movieId).success(function(data) {
       imctube.movie = data;
-      console.log(imctube.movie);
+
     });
+
+    $http.get('/imctube/webapi/movies/'+ $routeParams.movieId + '/clips/lastClip').success(function(data) {
+      imctube.prevClip = data;
+      imctube.currentClip.startTime = imctube.prevClip.endTime;
+    });
+
+    $scope.$watch(function() {
+      if(angular.isDefined(imctube.movie.player)) {
+        return imctube.movie.player.seekTo;
+      } else {
+        return null;
+      }
+    }, function(newValue) {
+      if(angular.isDefined(newValue) && angular.isDefined(imctube.movie.player)) {
+        imctube.movie.player.seekTo(imctube.currentClip.startTime, true);
+      }
+    });    
 
     imctube.submitClip =  function() {
       delete imctube.currentClip.artists;
       imctube.currentClip.movieId = imctube.movie.id;
       imctube.currentClip.movieName = imctube.movie.name;
-      console.log("In submitClip");
-
+      imctube.currentClip.videoId = imctube.movie.videoId;
       $http.post('/imctube/webapi/movies/' + imctube.movie.id + '/clips', imctube.currentClip)
         .then(function(data) {
-          console.log("Success");
-          console.log(data.data);
         }, function(data) {
           console.log("Failed" + data);
         });
+
+      imctube.prevClip = imctube.currentClip;  
       imctube.currentClip = {
         artists : [],
         artistIds: [],
         thumbnails: [],
         dialogues: [],
+        startTime: imctube.prevClip.endTime
       };
-      $('#rootwizard').find("a[href*='clipInfo']").trigger('click');
+      imctube.movie.player.seekTo(imctube.currentClip.startTime, true);
+      imctube.movie.player.playVideo();
+
+      $('#rootwizard').find("a[href*='dialogues']").trigger('click');
     };
 
   }]);
@@ -191,11 +211,9 @@
     this.submit = function() {
       $http.post("/imctube/webapi/movies", this.movie)
         .then(function(data) {
-          console.log("Success " + data);
         }, function(data) {
           console.log("Fail" + data);
         });
-      console.log(this.movie);
       this.movie = {videoId : ''};
     }
   }]);
@@ -223,12 +241,10 @@
     this.submit = function() {
       $http.post("/imctube/webapi/artists", this.artist)
         .then(function(data) {
-          console.log("Success " + data);
         }, function(data) {
           console.log("Failure" + data);
         });
       this.artist = {};
-      console.log(this.artist);
     }
   }]);
 

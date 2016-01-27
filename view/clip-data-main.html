@@ -1,39 +1,20 @@
 <section id="wizard">
   <div id="rootwizard">
-    <ul>
-      <li><a href="#clipInfo" data-toggle="tab"><span class="label"></span>Info</a></li>
-      <li><a href="#artists" data-toggle="tab"><span class="label"></span>Artists</a></li>
-      <li><a href="#thumbnails" data-toggle="tab"><span class="label"></span>Thumbnails</a></li>
+    <ul ng-show="false">
       <li><a href="#dialogues" data-toggle="tab"><span class="label"></span>Dialogues</a></li>
-      <li><a href="#submit" data-toggle="tab"><span class="label"></span>Submit</a></li>
+      <li><a href="#thumbnails" data-toggle="tab"><span class="label"></span>Thumbnails</a></li>
     </ul>
   
     <!-- content for tabs goes here -->
     <div class="tab-content">
       <!-- Clip info goes here -->
-      <div class="tab-pane"  id="clipInfo" style="padding-top:20px">
+      <div class="tab-pane"  id="dialogues"> 
         <clip-info></clip-info>
       </div>
 
-      <!-- Clip artist selection goes here -->
-      <div class="tab-pane"  id="artists" style="padding-top:20px">
-        <clip-artists></clip-artists>
-      </div>
-
       <!-- Clip thumbnails goes here -->
-      <div class="tab-pane"  id="thumbnails" style="padding-top:20px">
+      <div class="tab-pane"  id="thumbnails">
         <clip-thumbnails></clip-thumbnails>
-      </div>
-
-      <!-- Clip dialogues goes here -->
-      <div class="tab-pane"  id="dialogues" style="padding-top:20px">
-        <clip-dialogues></clip-dialogues>
-      </div>
-
-      <!-- submiting clip data to backend -->
-      <div class="tab-pane"  id="submit" style="padding-top:20px">
-        {{movieCtrl.currentClip}}
-        <button type="button" class="btn btn-primary" ng-click="movieCtrl.submitClip()">Submit clip</button>
       </div>
     </div>
 

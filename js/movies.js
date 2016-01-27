@@ -44,7 +44,6 @@
       angular.element(document).ready(function() {
         $('#rootwizard').bootstrapWizard({'tabClass': 'bwizard-steps',
           'onTabClick': function(tab, navigation, index) {
-            console.log("In tab click");
           },
           'onNext': function(tab, navigation, index) {
           },
@@ -62,14 +61,16 @@
       restrict: 'E',
       templateUrl: 'view/clip-info-capture.html',
       controller: function() {
-
-        this.captureClipStartTime = function(player, clip) {
-          clip.startTime = player.getCurrentTime();
-        };
+        this.edit = false;
 
         this.captureClipEndTime = function(player, clip) {
           clip.endTime = player.getCurrentTime();
+          player.pauseVideo();
         };
+
+        this.toggleEditMode = function() {
+          this.edit = !this.edit;
+        }
       },
       controllerAs: 'clipInfo'
     };
@@ -194,7 +195,7 @@
       },
       link: function(scope,elem,attrs) {
         scope.handleSelection = function(selectedItem) {
-          scope.model = selectedItem;
+          scope.model = angular.copy(selectedItem);
           scope.current = 0;
           scope.selected = true;
           $timeout(function() {
@@ -209,6 +210,12 @@
         scope.setCurrent = function(index) {
          scope.current = index;
         };
+        scope.changed = function() {
+          if( scope.model.firstName === '') {
+            scope.model = {};
+            scope.selected = false;
+          }
+        }
       },
       templateUrl: 'view/typeahead.html',
     }

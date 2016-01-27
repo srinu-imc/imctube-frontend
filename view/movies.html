@@ -5,7 +5,7 @@
       <ul class="pagination">
         <li class="col-md-4" ng-repeat="movie in moviesCtrl.movies">
           <div class="panel panel-primary">
-            <a href="{{moviesCtrl.getUrl(movie.videoId)}}">
+            <a href="{{moviesCtrl.getUrl(movie.id)}}">
               <img class="img-responsive img-thumbnail" ng-src="http://img.youtube.com/vi/{{movie.videoId}}/0.jpg"></img>
             </a>
             <p class="text-primary text-small text-center">{{movie.name}}</p>
