@@ -66,6 +66,7 @@
         this.captureClipEndTime = function(player, clip) {
           clip.endTime = player.getCurrentTime();
           player.pauseVideo();
+          $('#rootwizard').find("a[href*='thumbnails']").trigger('click');
         };
 
         this.toggleEditMode = function() {

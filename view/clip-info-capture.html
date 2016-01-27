@@ -1,8 +1,6 @@
-<div class="row">
-  <div class="container-fluid" style="padding-bottom:20px">
-    <button type="button" class="btn btn-primary pull-left" ng-click="clipInfo.captureClipEndTime(movieCtrl.movie.player, movieCtrl.currentClip)">End clip here</button>
-    <button type="button" class="btn btn-primary pull-right" ng-click="clipInfo.toggleEditMode()">Toggle edit mode</button>
-  </div>  
-</div>
-
 <clip-dialogues></clip-dialogues>
+
+<div class="container-fluid" style="padding-right:0px;padding-left:0px">
+  <button type="button" class="btn btn-primary btn-block" ng-click="clipInfo.toggleEditMode()">Toggle edit mode</button> 	
+  <button type="button" class="btn btn-primary btn-block" ng-click="clipInfo.captureClipEndTime(movieCtrl.movie.player, movieCtrl.currentClip)">End clip here</button>
+</div>
