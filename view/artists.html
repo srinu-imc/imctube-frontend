@@ -1,18 +1,12 @@
 <div class="container">
-  <div class="row">
-<!--     <div class="col-md-2 col-sm-1"></div>
- -->    <div class="col-md-12">
-      <ul class="pagination">
-        <li class="col-md-2 nopadding" ng-repeat="artist in artistsCtrl.artists">
-          <div class="panel panel-primary">
-            <a href="#artists/{{artist.id}}/movies">
-              <img class="img-responsive" ng-src="{{artist.thumbnail}}"></img>
-            </a>
-            <p class="text-primary text-small text-center" style="overflow:hidden">{{artist.firstName}}</p>
-          </div>
-        </li>
-      </ul>
-     </div>
-<!--      <div class="col-md-4 col-sm-1"></div>
- -->  </div>
+  <ul class="pagination">
+    <li class="col-md-2 nopadding" ng-repeat="artist in artistsCtrl.artists">
+      <div class="panel panel-primary">
+        <a href="#artists/{{artist.id}}/movies">
+          <img class="img-responsive" ng-src="{{artist.thumbnail}}"></img>
+        </a>
+        <p class="text-primary text-small text-center" style="overflow:hidden">{{artist.firstName}}</p>
+      </div>
+    </li>
+  </ul>
 </div>
