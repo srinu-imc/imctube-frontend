@@ -1,33 +1,43 @@
 (function() {
-  var app = angular.module('imctubeApp', ['movie-directives', 'ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'ui.router', 'ngRoute', 'satellizer']);
+  var app = angular.module('imctubeApp', ['movie-directives', "ngRoute", "satellizer"]);
 
   app.config(function($routeProvider, $authProvider, $stateProvider, $urlRouterProvider) {
-    $routeProvider
-      .when("/", {
-        templateUrl: 'view/artists.html',
-        controller: 'ArtistListController',
-        controllerAs: 'artistsCtrl'
-      })
 
-      .when("/login", {
+    $stateProvider
+      .state('home', {
+        url: '/',
+        controller: 'ArtistListController',
+        templateUrl: 'view/artists.html'
+      })  
+      .state('login', {
+        url: '/login',
         templateUrl: 'view/login.html',
         controller: 'LoginCtrl',
         resolve: {
           skipIfLoggedIn: skipIfLoggedIn
         }
-      })
-
-      .when('/signup', {
+      })  
+      .state('signup', {
+        url: '/signup',
         templateUrl: 'view/signup.html',
         controller: 'SignupCtrl',
         resolve: {
           skipIfLoggedIn: skipIfLoggedIn
         }
-      })
-
-      .when('/logout', {
+      })  
+      .state('logout', {
+        url: '/logout',
         template: null,
         controller: 'LogoutCtrl'
+      }); 
+
+    $urlRouterProvider.otherwise('/');
+
+    $routeProvider
+      .when("/", {
+        templateUrl: 'view/artists.html',
+        controller: 'ArtistListController',
+        controllerAs: 'artistsCtrl'
       })
 
       .when("/artists/", {
@@ -94,13 +104,10 @@
         templateUrl: 'view/add-movie.html'
       });
 
-    $authProvider.loginUrl = "imctube/webapi/auth/login";
-    $authProvider.signupUrl = "imctube/webapi/auth/signup";
-
     $authProvider.facebook({
       clientId: '1691017817849603',
       url: 'imctube/webapi/auth/facebook'
-    });
+    }); 
 
     function skipIfLoggedIn($q, $auth) {
       var deferred = $q.defer();
@@ -108,15 +115,9 @@
         deferred.reject();
       } else {
         deferred.resolve();
-      }
+      }   
       return deferred.promise;
-    }
-  });
-
-  app.controller('NavbarCtrl', function($scope, $auth) {
-    $scope.isAuthenticated = function() {
-      return $auth.isAuthenticated();
-    };
+    }   
   });
 
   app.controller('LoginCtrl', function($scope, $location, $auth, toastr) {

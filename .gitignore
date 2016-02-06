@@ -1,5 +1,8 @@
 resources/movies/*
 resources/actors/*
 resources/singers/*
+resources/artists*
+resources/movies*
+resources/original/*
 tmp/*
 

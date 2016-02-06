@@ -14,13 +14,30 @@
 
     <link rel="stylesheet" href="css/custom.css">
 
+    <link href="favicon.png" rel="shortcut icon">
+    <link href="//fonts.googleapis.com/css?family=Roboto|Montserrat:400,700|Open+Sans:400,300,600" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css" rel="stylesheet">
+    <link href="css/angular-toastr.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
     <!-- Angular Dependencies -->
     <script src="deps/js/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
 
+    <script src="deps/js/angular-animate.js"></script>
+    <script src="deps/js/angular-messages.js"></script>
+    <script src="deps/js/angular-resource.js"></script>
+    <script src="deps/js/angular-sanitize.js"></script>
+    <script src="deps/js/angular-ui-router.js"></script>
+    <script src="deps/js/angular-toastr.tpls.js"></script>
+
     <!-- Youtube related dependencies -->
     <script src="https://www.youtube.com/iframe_api"></script>
     <script src="deps/js/angular-youtube-embed.min.js"></script>
+    <script src="//cdn.jsdelivr.net/satellizer/0.13.4/satellizer.min.js"></script>
 
     <!-- imctube scripts -->
     <script src="js/imctube.js"></script>
@@ -29,6 +46,21 @@
   </head>
 
   <body>
+  <div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">imctube</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="#/">Home</a></li>
+    </ul>
+    <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
+      <li><a href="#login/">Login</a></li>
+      <li><a href="#signup/">Sign up</a></li>
+    </ul>
+    <ul ng-if="isAuthenticated()" class="nav navbar-nav pull-right">
+      <li><a href="#logout/">Logout</a></li>
+    </ul>
+  </div>
 
   <div class="container-fluid">
     <div class="col-md-1">
@@ -44,8 +76,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="deps/js/jquery.bootstrap.wizard.min.js"></script>
-    <!--
-    <script src="deps/js/docs.min.js"></script>
-    -->
+  </div>
   </body>
 </html>
