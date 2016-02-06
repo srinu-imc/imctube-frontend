@@ -46,12 +46,14 @@
   </head>
 
   <body>
+  <div class="controller">
   <div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">imctube</a>
-    </div>
     <ul class="nav navbar-nav">
+      <li><a href="#/">imctube</a></li>
       <li><a href="#/">Home</a></li>
+      <li data-ng-class="{'active' : sideBar.isSet('clipify')}" ng-click="sideBar.setTab('clipify')"><a href="#clipify/">Clipify</a></li>
+      <li data-ng-class="{'active' : sideBar.isSet('addmovie')}" ng-click="sideBar.setTab('addmovie')"><a href="#addmovie/">Add Movie</a></li>
+      <li data-ng-class="{'active' : sideBar.isSet('addartist')}" ng-click="sideBar.setTab('addartist')"><a href="#addartist/">Add Artist</a></li>
     </ul>
     <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
       <li><a href="#login/">Login</a></li>
@@ -62,16 +64,8 @@
     </ul>
   </div>
 
-  <div class="container-fluid">
-    <div class="col-md-1">
-      <side-bar></side-bar>
-    </div>
-    <div class="col-md-11">
-      <div class="controller">
-        <div ng-view></div>
-      </div>
-    </div>
-    <!-- bootstrap related js -->
+  <div ng-view></div>
+  <!-- bootstrap related js -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

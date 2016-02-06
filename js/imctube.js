@@ -117,6 +117,20 @@
     $scope.isAuthenticated = function() {
       return $auth.isAuthenticated();
     };
+
+    this.currentTab = '';
+
+    this.init = function(currentTab) {
+      this.currentTab = currentTab;
+    };
+
+    this.setTab = function(tab) {
+      this.currentTab = tab;
+    };
+
+    this.isSet = function(tab) {
+      return this.currentTab === tab;
+    }
   });
 
   app.controller('LoginCtrl', function($scope, $location, $auth, toastr) {
