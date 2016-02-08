@@ -48,24 +48,6 @@
         controllerAs: 'clipsCtrl'
       })
 
-      .when("/movies/", {
-        templateUrl: 'view/movies.html',
-        controller: 'MovieListController',
-        controllerAs: 'moviesCtrl'
-      })
-
-      .when("/movies/:movieId/clips", {
-        templateUrl: 'view/clips.html',
-        controller: 'ClipListController',
-        controllerAs: 'clipsCtrl'
-      })
-
-      .when("/clips/", {
-        templateUrl: 'view/clips.html',
-        controller: 'ClipListController',
-        controllerAs: 'clipsCtrl'
-      })
-
       .when("/clips/:clipId", {
         templateUrl: 'view/clip-player.html',
         controller: 'ClipPlayerController',
@@ -216,14 +198,15 @@
     var imctube = this;
     imctube.movies = [];
 
-    $http.get('/imctube/webapi/movies').success(function(data) {
+    $http.get('/imctube/webapi/clipify').success(function(data) {
       imctube.movies = data;
     });
   }]);
 
   app.controller('ClipListController', ['$http', '$routeParams', function($http, $routeParams) {
     var imctube = this;
-    imctube.clips = [];
+     imctube.clips = [];
+ 
     $http.get('/imctube/webapi/artists/' + $routeParams.artistId + '/movies/' + $routeParams.movieId + '/clips').success(function(data) {
       imctube.clips = data;
     });
@@ -271,10 +254,9 @@
 
     $http.get('/imctube/webapi/movies/' + $routeParams.movieId).success(function(data) {
       imctube.movie = data;
-
     });
 
-    $http.get('/imctube/webapi/movies/'+ $routeParams.movieId + '/clips/lastClip').success(function(data) {
+    $http.post('/imctube/webapi/clipify/'+ $routeParams.movieId).success(function(data) {
       imctube.prevClip = data;
       imctube.currentClip.startTime = imctube.prevClip.endTime;
     });
@@ -296,7 +278,7 @@
       imctube.currentClip.movieId = imctube.movie.id;
       imctube.currentClip.movieName = imctube.movie.name;
       imctube.currentClip.videoId = imctube.movie.videoId;
-      $http.post('/imctube/webapi/movies/' + imctube.movie.id + '/clips', imctube.currentClip)
+      $http.post('/imctube/webapi/clipify/' + imctube.movie.id + '/clips', imctube.currentClip)
         .then(function(data) {
         }, function(data) {
           console.log("Failed" + data);
