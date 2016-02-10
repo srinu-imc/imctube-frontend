@@ -3,15 +3,15 @@
   <div class="panel-heading"> Add the artists in the clip </div>
   <div class="panel-body">
   <ul>
-    <li ng-repeat="artist in movieCtrl.currentClip.artists">
+    <li ng-repeat="artist in currentClip.artists">
        <p>{{artist.firstName}}</p>
     </li>
    </ul>
   </div>
   <form class="form-horizontal">
-    <div class="form-group" ng-controller='TypeAheadController'>
+    <div class="form-group" ng-controller='TypeAheadCtrl'>
       <div class="col-md-8 col-md-offset-1">
-        <typeahead items="items" prompt="Artist name" artist="firstName" url="thumbnail" model="artist" on-select="onItemSelectedToList(movieCtrl.currentClip)"/></typeahead>
+        <typeahead items="items" prompt="Artist name" artist="firstName" url="thumbnail" model="artist" on-select="onItemSelectedToList(currentClip)"/></typeahead>
       </div>
     </div>
   </form>

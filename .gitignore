@@ -4,5 +4,7 @@ resources/singers/*
 resources/artists*
 resources/movies*
 resources/original/*
+node_modules/*
+dest/*
 tmp/*
 

@@ -1,9 +1,9 @@
-<div class="container" ng-controller="ClipifyListController as moviesCtrl">
+<div class="container" ng-controller="ClipifyListCtrl">
   <div class="row">
     <div class="col-md-2 col-sm-1"></div>
     <div class="col-md-6 col-sm-10">
       <ul class="pagination">
-        <li class="col-md-4" ng-repeat="movie in moviesCtrl.movies">
+        <li class="col-md-4" ng-repeat="movie in movies">
           <div class="panel panel-primary">
             <a href="#clipify/{{movie.id}}">
             <img class="img-responsive img-thumbnail" ng-src="http://img.youtube.com/vi/{{movie.videoId}}/0.jpg"></img></a>
