@@ -1,16 +1,15 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h4>Add artists appeared in the clip and their dialogues.</h4>
+    <span sytle="right">Clip Duration: {{duration | date:'mm:ss'}}</span>
   </div>
 
   <div class="panel-body" ng-controller='TypeAheadCtrl'>
     <form class="form-horizontal">
       <div class="form-group">
-        <div class="form-group">
-          <label for="artist" class="col-md-3 control-label">Artist</label>
-          <div class="col-md-8">
-            <typeahead items="items" prompt="Artist name" artist="firstName" url="thumbnail" model="artist" on-select="updateArtist(dialogue)"/></typeahead>
-          </div>
+        <label for="artist" class="col-md-3 control-label">Artist</label>
+        <div class="col-md-8">
+          <typeahead items="items" prompt="Artist name" artist="firstName" url="thumbnail" model="artist" on-select="updateArtist(dialogue)"/></typeahead>
         </div>
       </div>
       <div class="form-group">

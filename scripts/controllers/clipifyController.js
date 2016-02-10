@@ -1,4 +1,4 @@
-function ClipifyCtrl($http, $routeParams, $route, $scope) {
+function ClipifyCtrl($http, $routeParams, $route, $scope, $interval) {
   $scope.movie = {};
   $scope.currentClip = {
     artists : [],
@@ -7,6 +7,13 @@ function ClipifyCtrl($http, $routeParams, $route, $scope) {
     dialogues: [],
     startTime: 0.01,
   };
+
+  $interval(function() {
+    if(angular.isDefined($scope.movie.player.getCurrentTime)) {
+      $scope.duration =
+        ($scope.movie.player.getCurrentTime() - $scope.currentClip.startTime) * 1000;
+    }
+  }, 1000);
 
   $http.get('/imctube/webapi/movies/' + $routeParams.movieId)
       .success(function(data) {
@@ -29,7 +36,7 @@ function ClipifyCtrl($http, $routeParams, $route, $scope) {
     if(angular.isDefined(newValue) && angular.isDefined($scope.movie.player)) {
       $scope.movie.player.seekTo($scope.currentClip.startTime, true);
     }
-  });    
+  });
 
   $scope.submitClip =  function() {
     delete $scope.currentClip.artists;
@@ -42,7 +49,7 @@ function ClipifyCtrl($http, $routeParams, $route, $scope) {
           console.log("Failed" + data);
         });
 
-    $scope.prevClip = $scope.currentClip;  
+    $scope.prevClip = $scope.currentClip;
     $scope.currentClip = {
       artists : [],
       artistIds: [],
@@ -50,7 +57,7 @@ function ClipifyCtrl($http, $routeParams, $route, $scope) {
       dialogues: [],
       startTime: $scope.prevClip.endTime
     };
-    
+
     $scope.movie.player.seekTo($scope.currentClip.startTime, true);
     $scope.movie.player.playVideo();
 
@@ -58,5 +65,5 @@ function ClipifyCtrl($http, $routeParams, $route, $scope) {
   };
 };
 
-ClipifyCtrl.$inject = ['$http', '$routeParams', '$route', '$scope'];
+ClipifyCtrl.$inject = ['$http', '$routeParams', '$route', '$scope', '$interval'];
 angular.module('imctubeApp').controller('ClipifyCtrl', ClipifyCtrl);
