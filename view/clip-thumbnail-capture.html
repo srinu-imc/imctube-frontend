@@ -8,13 +8,13 @@
 	<div class="row" ng-init="init(movie.thumbnailCount)">
 	  <ul class="pagination">
 	    <div class="col-sm-1">
-	 	  <li class="pull-right"><a class="btn" href ng-disabled="isFirstPage()" ng-click="prevPage()">&laquo;</a></li>
+	 	  <li class="pull-right nopadding"><a class="btn" href ng-disabled="isFirstPage()" ng-click="prevPage()">&laquo;</a></li>
 	    </div>
 	    <li class="col-sm-2 nopadding" ng-repeat="i in [] | range: movie.thumbnailCount | pagination : currentPage * pageSize | limitTo: pageSize">
 		<img class="img-responsive nopadding" ng-click="select('resources/movies/' + movie.videoId + '/thumbnails-' + i + '.jpeg', currentClip)" ng-src="resources/movies/{{movie.videoId}}/thumbnails-{{i}}.jpeg"></img>
 	    </li>
 	    <div class="col-sm-1">
-	  	  <li class="pull-left"><a class="btn" href ng-disabled="isLastPage()" ng-click="nextPage()">&raquo;</a></li>
+	  	  <li class="pull-left no-padding"><a class="btn" href ng-disabled="isLastPage()" ng-click="nextPage()">&raquo;</a></li>
 	    </div>
 	  </ul>
 	</div>

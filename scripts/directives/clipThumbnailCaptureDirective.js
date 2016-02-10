@@ -26,7 +26,9 @@ angular.module('imctubeApp')
         }
 
         $scope.select = function(thumbnail, clip) {
-           clip.thumbnails.push(thumbnail);
+          if(clip.thumbnails.indexOf(thumbnail) == -1) {
+            clip.thumbnails.push(thumbnail);
+          }
         }
 
         $scope.nextPage = function() {
