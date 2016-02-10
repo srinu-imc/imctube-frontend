@@ -1,11 +1,10 @@
 <div class="panel panel-primary">
   <!-- panel heading goes here -->
   <div class="panel-heading">Clip thumbnail selection</div>
-
   <!-- panel body goes here -->
   <div class="panel-body">
     <h4 class="text-warning nopadding">Thumbnails from movie in the order they appear in movie</h4>
-	<div class="row" ng-init="init(movie.thumbnailCount)">
+	<div class="row" ng-init="init(movie.thumbnailCount, prevClip)">
 	  <ul class="pagination">
 	    <div class="col-sm-1">
 	 	  <li class="pull-right nopadding"><a class="btn" href ng-disabled="isFirstPage()" ng-click="prevPage()">&laquo;</a></li>
@@ -17,7 +16,7 @@
 	  	  <li class="pull-left no-padding"><a class="btn" href ng-disabled="isLastPage()" ng-click="nextPage()">&raquo;</a></li>
 	    </div>
 	  </ul>
-	</div>
+	</div>	
 
 	<h4 class="text-warning nopadding">Selected clip thumbnails</h4>
 	<div class="row">

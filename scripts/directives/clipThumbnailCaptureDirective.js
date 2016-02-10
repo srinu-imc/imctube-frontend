@@ -8,13 +8,27 @@ angular.module('imctubeApp')
         $scope.pageSize = 5;
         $scope.totalPages = -1;
 
-        $scope.init = function(totalImages) {
+        $scope.init = function(totalImages, prevClip) {
           var pages = totalImages / $scope.pageSize;
           if (totalImages % $scope.pageSize === 0) {
             $scope.totalPages = totalImages / $scope.pageSize;
           }  else {
             $scope.totalPages = totalImages/ $scope.pageSize + 1;
           }
+          $scope.currentPage = $scope.getLastSelectedIndex(prevClip) / $scope.pageSize;
+        }
+
+        $scope.getLastSelectedIndex = function (lastClip) {
+          var re = /.*thumbnails-(\d*).jpeg/i;
+          var max = 0;
+          if(angular.isDefined(lastClip.thumbnails)) {
+            for( i=0; i< lastClip.thumbnails.length; i++) {
+              max = Math.max(max,lastClip.thumbnails[i].match(re)[1]);
+            }
+          } else {
+            return 0;
+          }
+          return max;  
         }
 
         $scope.isFirstPage = function() {
