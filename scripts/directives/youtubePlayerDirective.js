@@ -12,10 +12,6 @@ angular.module('imctubeApp')
           player.pauseVideo();
         };
 
-        $scope.playFromMovieStart = function(player) {
-          player.seekTo(0, true);
-        };
-
         $scope.backward = function(player) {
           player.seekTo(player.getCurrentTime() - 10, true);
         }
