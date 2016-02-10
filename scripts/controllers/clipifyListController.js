@@ -2,7 +2,6 @@ function ClipifyListCtrl($http, $routeParams, $scope) {
   $scope.movies = [];
 
   $http.get('/imctube/webapi/clipify').success(function(movies) {
-    console.log(movies);	
     $scope.movies = movies;
   });
 };

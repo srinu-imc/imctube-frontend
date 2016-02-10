@@ -417,3 +417,11 @@ ul {
     opacity: 1;
   }
 }
+
+.nopadding {
+	padding:1px;
+}
+
+.pagination {
+  display: inline;
+}
