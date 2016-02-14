@@ -4,31 +4,31 @@
   <!-- panel body goes here -->
   <div class="panel-body">
     <h4 class="text-warning nopadding">Thumbnails from movie in the order they appear in movie</h4>
-	<div class="row" ng-init="init(movie.thumbnailCount, prevClip)">
-	  <ul class="pagination">
-	    <div class="col-sm-1">
-	 	  <li class="pull-right nopadding"><a class="btn" href ng-disabled="isFirstPage()" ng-click="prevPage()">&laquo;</a></li>
-	    </div>
-	    <li class="col-sm-2 nopadding" ng-repeat="i in [] | range: movie.thumbnailCount | pagination : currentPage * pageSize | limitTo: pageSize">
-		<img class="img-responsive nopadding" ng-click="select('resources/movies/' + movie.videoId + '/thumbnails-' + i + '.jpeg', currentClip)" ng-src="resources/movies/{{movie.videoId}}/thumbnails-{{i}}.jpeg"></img>
-	    </li>
-	    <div class="col-sm-1">
-	  	  <li class="pull-left no-padding"><a class="btn" href ng-disabled="isLastPage()" ng-click="nextPage()">&raquo;</a></li>
-	    </div>
-	  </ul>
-	</div>	
-
-	<h4 class="text-warning nopadding">Selected clip thumbnails</h4>
-	<div class="row">
-	  <ul class="pagination">
-	    <li class="col-sm-1"></li>
-	    <li class="col-sm-2 nopadding" ng-repeat="thumbnail in currentClip.thumbnails">
-		  <img class="img-responsive nopadding" ng-click='select(thumbnail, currentClip)' ng-src="{{thumbnail}}"></img>
-	    </li>
-	  </ul>
-	</div>	
+  <div class="row" ng-init="init(movie.thumbnailCount, prevClip)">
+    <ul class="pagination">
+      <div class="col-sm-1">
+       <li class="pull-right nopadding"><a class="btn" href ng-disabled="isFirstPage()" ng-click="prevPage()">&laquo;</a></li>
+      </div>
+      <li class="col-sm-2 nopadding" ng-repeat="i in [] | range: movie.thumbnailCount | pagination : currentPage * pageSize | limitTo: pageSize">
+    <img class="img-responsive nopadding" ng-click="select('resources/movies/' + movie.videoId + '/thumbnails-' + i + '.jpeg', currentClip)" ng-src="resources/movies/{{movie.videoId}}/thumbnails-{{i}}.jpeg"></img>
+      </li>
+      <div class="col-sm-1">
+        <li class="pull-left no-padding"><a class="btn" href ng-disabled="isLastPage()" ng-click="nextPage(movie, prevClip)">&raquo;</a></li>
+      </div>
+    </ul>
   </div>
-</div>	
+
+  <h4 class="text-warning nopadding">Selected clip thumbnails</h4>
+  <div class="row">
+    <ul class="pagination">
+      <li class="col-sm-1"></li>
+      <li class="col-sm-2 nopadding" ng-repeat="thumbnail in currentClip.thumbnails">
+      <img class="img-responsive nopadding" ng-click='select(thumbnail, currentClip)' ng-src="{{thumbnail}}"></img>
+      </li>
+    </ul>
+  </div>
+  </div>
+</div>
 
 <div class="panel panel-primary">
   <div class="panel-heading">Describe what is happening in the clip with your own words</div>

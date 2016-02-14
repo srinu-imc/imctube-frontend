@@ -7,6 +7,7 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval) {
     dialogues: [],
     startTime: 0.01,
   };
+  $scope.prevClip = {};
 
   $interval(function() {
     if(angular.isDefined($scope.movie.player.getCurrentTime)) {
@@ -23,7 +24,11 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval) {
   $http.post('/imctube/webapi/clipify/'+ $routeParams.movieId)
       .success(function(data) {
         $scope.prevClip = data;
-        $scope.currentClip.startTime = $scope.prevClip.endTime;
+        if(angular.isDefined($scope.prevClip.endTime)) {
+          $scope.currentClip.startTime = $scope.prevClip.endTime;
+        } else {
+          $scope.currentClip.startTime = 0.01;
+        }
       });
 
   $scope.$watch(function() {

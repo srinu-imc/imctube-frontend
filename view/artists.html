@@ -3,7 +3,7 @@
     <li class="col-md-2 nopadding" ng-repeat="artist in artists">
       <div class="panel panel-primary">
         <a href="#artists/{{artist.id}}/movies">
-          <img class="img-responsive" ng-src="{{artist.thumbnail}}"></img>
+          <img class="img-responsive" ng-src="{{getUrl(artist)}}" ng-alt="Description"></img>
         </a>
         <p class="text-primary text-small text-center" style="overflow:hidden">{{artist.firstName}}</p>
       </div>

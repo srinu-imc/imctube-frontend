@@ -15,7 +15,10 @@ angular.module('imctubeApp')
           }  else {
             $scope.totalPages = totalImages/ $scope.pageSize + 1;
           }
-          $scope.currentPage = $scope.getLastSelectedIndex(prevClip) / $scope.pageSize;
+
+          if(angular.isDefined(prevClip)) {
+            $scope.currentPage = $scope.getLastSelectedIndex(prevClip) / $scope.pageSize;
+          }
         }
 
         $scope.getLastSelectedIndex = function (lastClip) {
@@ -45,7 +48,12 @@ angular.module('imctubeApp')
           }
         }
 
-        $scope.nextPage = function() {
+        $scope.nextPage = function(movie, prevClip) {
+          $scope.totalPages = movie.thumbnailCount / $scope.pageSize;
+          var lastPage = $scope.getLastSelectedIndex(prevClip) / $scope.pageSize;
+          if(lastPage > $scope.currentPage) {
+            $scope.currentPage = lastPage;
+          }
           if($scope.currentPage < $scope.totalPages - 1) {
             $scope.currentPage += 1;
           }

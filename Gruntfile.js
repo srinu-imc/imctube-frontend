@@ -24,7 +24,7 @@ module.exports = function(grunt) {
       },
       app1: {
         files: {
-          'imctube.js': ['imctube.js']
+          'dest/imctube.js': ['dest/imctube.js']
         },
       },
     }
