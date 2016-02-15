@@ -1,13 +1,19 @@
-<div class="container">
+<div class="container" ng-controller="TypeAheadCtrl">
   <div class="col-sm-6 col-sm-offset-1">
     <div class="panel panel-primary">
       <div class="panel-heading">Artist information</div>
       <div class="panel-body">
         <form class="form-horizontal">
           <div class="form-group">
-            <label for="firstName" class="col-sm-4 control-label">First Name</label>
+            <label for="industryName" class="col-sm-4 control-label">Name in industry</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" ng-model="artist.firstName" placeholder="First Name">
+              <input type="text" class="form-control" ng-model="artist.industryName" placeholder="Name in industry">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="firstName" class="col-sm-4 control-label">First Name</label>
+            <div class="col-sm-8" >
+              <typeahead items="items" prompt="Artist First Name" artist="firstName" url="thumbnail" model="artist"/></typeahead>
             </div>
           </div>
           <div class="form-group">
@@ -34,7 +40,7 @@
               <input type="text" class="form-control" ng-model="artist.dob" placeholder="dd/mm/yyyy">
             </div>
           </div>
-          <button class="btn btn-primary pull-right" ng-click="submit()">Submit</button>
+          <button class="btn btn-primary pull-right" ng-click="submit(artist);artist={}">Submit</button>
         </form>
       </div>
     </div>
