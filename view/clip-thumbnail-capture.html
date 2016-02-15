@@ -39,7 +39,6 @@
     </form>
   </div>
 </div>
-
 <div class="container-fluid" style="padding-right:0px;padding-left:0px">
-  <button type="button" class="btn btn-primary btn-block" ng-click="submitClip()">Submit Clip</button>
+  <button ng-disabled="currentClip.thumbnails.length == 0" type="button" class="btn btn-primary btn-block" ng-click="submitClip()">Submit Clip</button>
 </div>
