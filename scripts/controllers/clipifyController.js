@@ -1,5 +1,6 @@
-function ClipifyCtrl($http, $routeParams, $route, $scope, $interval) {
+function ClipifyCtrl($http, $routeParams, $route, $scope, $interval, $window) {
   $scope.movie = {};
+  $scope.lastClipOfMovie = false;
   $scope.currentClip = {
     artists : [],
     artistIds: [],
@@ -43,12 +44,21 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval) {
     }
   });
 
+  $scope.isLast5Min = function() {
+    if(angular.isDefined($scope.movie.player.getDuration)) {
+      return (($scope.movie.player.getDuration() - $scope.currentClip.startTime) < 300.0);
+    } else {
+      return false;
+    }
+  };
+
   $scope.submitClip =  function() {
     delete $scope.currentClip.artists;
+    console.log("is last clip of movie " + $scope.lastClipOfMovie);
     $scope.currentClip.movieId = $scope.movie.id;
     $scope.currentClip.movieName = $scope.movie.name;
     $scope.currentClip.videoId = $scope.movie.videoId;
-    $http.post('/imctube/webapi/clipify/' + $scope.movie.id + '/clips', $scope.currentClip)
+    $http.post('/imctube/webapi/clipify/' + $scope.movie.id + '/clips?isLastClip=' + $scope.lastClipOfMovie, $scope.currentClip)
         .then(function(data) {
         }, function(data) {
           console.log("Failed" + data);
@@ -66,9 +76,13 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval) {
     $scope.movie.player.seekTo($scope.currentClip.startTime, true);
     $scope.movie.player.playVideo();
 
-    $('#rootwizard').find("a[href*='dialogues']").trigger('click');
+    if($scope.lastClipOfMovie) {
+      $window.open('#clipify', "_self");
+    } else {
+      $('#rootwizard').find("a[href*='dialogues']").trigger('click');
+    }
   };
 };
 
-ClipifyCtrl.$inject = ['$http', '$routeParams', '$route', '$scope', '$interval'];
+ClipifyCtrl.$inject = ['$http', '$routeParams', '$route', '$scope', '$interval', '$window'];
 angular.module('imctubeApp').controller('ClipifyCtrl', ClipifyCtrl);
