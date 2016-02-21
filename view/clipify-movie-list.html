@@ -1,11 +1,16 @@
 <div class="container" ng-controller="ClipifyListCtrl">
-  <ul class="pagination">
-    <li class="col-md-2 nopadding" ng-repeat="movie in movies">
-      <div class="panel panel-primary">
-        <a href="#clipify/{{movie.id}}">
-        <img class="img-responsive nopadding" ng-src="http://img.youtube.com/vi/{{movie.videoId}}/mqdefault.jpg" ng-alt="Description"></img></a>
-        <p class="text-primary text-small text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{movie.name}}</p>
-      </div>
-    </li>
-  </ul>
+  <div ng-show="movies.length == 1">
+     <button type="button" class="btn btn-primary btn-block" ng-click="chooseAnother()">Choose Another Movie</button>
+  </div>
+  <div>
+    <ul class="pagination">
+      <li class="col-md-2 nopadding" ng-repeat="movie in movies">
+        <div class="panel panel-primary">
+          <a href="#clipify/{{movie.id}}">
+          <img class="img-responsive nopadding" ng-src="http://img.youtube.com/vi/{{movie.videoId}}/mqdefault.jpg" ng-alt="Description"></img></a>
+          <p class="text-primary text-small text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{movie.name}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
