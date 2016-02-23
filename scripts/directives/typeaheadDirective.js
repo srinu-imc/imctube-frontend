@@ -33,6 +33,14 @@ angular.module('imctubeApp')
             scope.selected = false;
           }
         }
+
+        scope.getUrl= function(item) {
+          if(angular.isDefined(item[scope.url])) {
+            return item[scope.url];
+          } else {
+            return "resources/artists/noprofile.jpg";
+          }
+        }
       },
       templateUrl: 'view/typeahead.html',
     }
