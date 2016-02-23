@@ -9,7 +9,7 @@
       <div class="form-group">
         <label for="artist" class="col-md-3 control-label">Artist</label>
         <div class="col-md-8">
-          <typeahead items="items" prompt="Artist name" artist="firstName" url="thumbnail" model="artist" on-select="updateArtist(dialogue)"/></typeahead>
+          <typeahead items="items" prompt="Artist name" artist="industryName" url="thumbnail" model="artist" on-select="updateArtist(dialogue)"/></typeahead>
         </div>
       </div>
       <div class="form-group">
@@ -28,7 +28,7 @@
     <div ng-hide="edit" ng-repeat="dialogue in currentClip.dialogues">
       <blockquote class="blockquote">
         <p>{{dialogue.text}}</p>
-        <footer>{{dialogue.artist.firstName}}</footer>
+        <footer>{{dialogue.artist.industryName}}</footer>
       </blockquote>
     </div>
 
@@ -38,7 +38,7 @@
           <div class="form-group">
             <label for="artist" class="col-md-3 control-label">Artist</label>
             <div class="col-md-8" ng-controller='TypeAheadCtrl'>
-              <typeahead items="items" prompt="Artist name" artist="firstName" url="thumbnail" model="dialogue.artist" on-select="updateArtistId(dialogue)"/></typeahead>
+              <typeahead items="items" prompt="Artist name" artist="industryName" url="thumbnail" model="dialogue.artist" on-select="updateArtistId(dialogue)"/></typeahead>
             </div>
           </div>
         </div>

@@ -28,7 +28,7 @@ angular.module('imctubeApp')
          scope.current = index;
         };
         scope.changed = function() {
-          if( scope.model.firstName === '') {
+          if( scope.model.industryName === '') {
             scope.model = {};
             scope.selected = false;
           }
