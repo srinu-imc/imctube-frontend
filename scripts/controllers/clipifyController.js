@@ -20,6 +20,15 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval, $window) {
   $http.get('/imctube/webapi/movies/' + $routeParams.movieId)
       .success(function(data) {
         $scope.movie = data;
+
+        $http.get('/imctube/webapi/movies/' + $routeParams.movieId + '/artists')
+            .success(function(artists) {
+              $scope.movie.artists = artists;
+
+              for(var i=0; i<artists.length; i++) {
+                $scope.movie.artistIds.push(artists[i].id);
+              }
+            });
       });
 
   $http.post('/imctube/webapi/clipify/'+ $routeParams.movieId)

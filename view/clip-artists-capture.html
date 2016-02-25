@@ -2,16 +2,45 @@
 <div class="panel panel-info">
   <div class="panel-heading"> Add the artists in the clip </div>
   <div class="panel-body">
-  <ul>
-    <li ng-repeat="artist in currentClip.artists">
-       <p>{{artist.industryName}}</p>
-    </li>
-   </ul>
+    <div class="col-md-6 nopadding">
+      <div class="panel panel-info">
+        <div class="panel-heading">Selected Artists</div>
+        <div ng-repeat="artist in currentClip.artists track by $index">
+          <div class="row">
+            <div class="col-md-2">
+              <img class="img-responsive img-circle" ng-src="{{getUrl(artist)}}"></img>
+            </div>
+            <div class="col-md-8">
+              <span>{{artist.industryName}}</span>
+            </div>
+            <div class="col-md-1">
+              <a class="pull-right" href ng-click="delete(currentClip)">x</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 nopadding">
+      <div class="panel panel-info">
+        <div class="panel-heading">Choose from the list</div>
+        <div ng-repeat="artist in movie.artists track by $index">
+          <div class="row">
+            <div class="col-md-2">
+              <img class="img-responsive img-circle" ng-click="selectArtist(currentClip, movie.artists)" ng-src="{{getUrl(artist)}}"></img>
+            </div>
+            <div class="col-md-8">
+              <span ng-click="selectArtist(currentClip, movie.artists)">{{artist.industryName}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <form class="form-horizontal">
     <div class="form-group" ng-controller='TypeAheadCtrl'>
-      <div class="col-md-8 col-md-offset-1">
-        <typeahead items="items" prompt="Artist name" artist="industryName" url="thumbnail" model="artist" on-select="onItemSelectedToList(currentClip)"/></typeahead>
+      <div class="col-md-8">
+        <typeahead items="items" prompt="Select by search" artist="industryName" url="thumbnail" model="artist" on-select="onItemSelectedToList(currentClip, movie)"/></typeahead>
       </div>
     </div>
   </form>
