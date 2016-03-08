@@ -9,16 +9,16 @@ angular.module('imctubeApp')
           $scope.newArtist = '';
         }
 
-        $scope.delete = function(currentClip) {
-          currentClip.artists.splice(this.$index, 1);
-          currentClip.artistIds.splice(this.$index, 1);
+        $scope.delete = function(clip) {
+          clip.artists.splice(this.$index, 1);
+          clip.artistIds.splice(this.$index, 1);
         }
 
-        $scope.selectArtist = function(currentClip, artists) {
+        $scope.selectArtist = function(clip, artists) {
           var artist = artists[this.$index];
-          if(currentClip.artistIds.indexOf(artist.id) == -1) {
-            currentClip.artists.push(artist);
-            currentClip.artistIds.push(artist.id);
+          if(clip.artistIds.indexOf(artist.id) == -1) {
+            clip.artists.push(artist);
+            clip.artistIds.push(artist.id);
           }
         }
 

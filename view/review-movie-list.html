@@ -1,0 +1,13 @@
+<div class="container" ng-controller="ReviewListCtrl">
+  <div>
+    <ul class="pagination">
+      <li class="col-md-2 nopadding" ng-repeat="movie in movies">
+        <div class="panel panel-primary">
+          <a href="#review/{{movie.id}}">
+          <img class="img-responsive nopadding" ng-src="http://img.youtube.com/vi/{{movie.videoId}}/mqdefault.jpg" ng-alt="Description"></img></a>
+          <p class="text-primary text-small text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{movie.name}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

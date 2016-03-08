@@ -65,6 +65,24 @@ app.config(function($routeProvider, $authProvider, $stateProvider, $urlRouterPro
       controllerAs: 'movieCtrl'
     })
 
+    .when("/review/", {
+      templateUrl: 'view/review-movie-list.html',
+      controller: 'ReviewListCtrl',
+      controllerAs: 'reviewListCtrl'
+    })
+
+    .when("/review/:movieId", {
+      templateUrl: 'view/review-clip-list.html',
+      controller: 'ReviewClipListCtrl',
+      controllerAs: 'reviewClipListCtrl'
+    })
+
+    .when("/review/clips/:clipId", {
+      templateUrl: 'view/review-clip.html',
+      controller: 'ReviewClipCtrl',
+      controllerAs: 'reviewClipCtrl'
+    })
+
     .when("/addartist/", {
       templateUrl: 'view/add-artist.html',
       controller: 'AddArtistCtrl',

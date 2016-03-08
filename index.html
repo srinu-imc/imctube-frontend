@@ -43,6 +43,7 @@
       </ul>
       <ul ng-if="isAuthenticated()" class="nav navbar-nav">
         <li data-ng-class="{'active' : sideBar.isSet('clipify')}" ng-click="sideBar.setTab('clipify')"><a href="#clipify/">Clipify</a></li>
+        <li data-ng-class="{'active' : sideBar.isSet('review')}" ng-click="sideBar.setTab('review')"><a href="#review/">Review</a></li>
         <li data-ng-class="{'active' : sideBar.isSet('addmovie')}" ng-click="sideBar.setTab('addmovie')"><a href="#addmovie/">Add Movie</a></li>
         <li data-ng-class="{'active' : sideBar.isSet('addartist')}" ng-click="sideBar.setTab('addartist')"><a href="#addartist/">Add Artist</a></li>
       </ul>
