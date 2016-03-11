@@ -1,18 +1,19 @@
-<div class="container-fluid">
+<div class="container-fluid" >
   <div class="panel panel-primary">
     <div class="panel-heading">Movie related information</div>
     <div class="panel-body">
       <form class="form-horizontal">
+        <div class="form-group" >
+          <label for="Name" class="col-sm-4 control-label">Movie Name</label>
+                 <div class="col-sm-8" >
+            <movie-typeahead items="items" prompt="Movie Name " name="name"  model="movie"/></movie-typeahead>
+          </div>
+          {{movie.name}}
+        </div>
         <div class="form-group">
           <label for="videoId" class="col-sm-4 control-label">Movie VideoId</label>
           <div class="col-sm-8">
             <input type="text" class="form-control" ng-model="movie.videoId" placeholder="Youtube VideoId">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="Name" class="col-sm-4 control-label">Movie Name</label>
-          <div class="col-sm-8">
-            <input type="text" class="form-control" ng-model="movie.name" placeholder="Movie Name">
           </div>
         </div>
         <div class="form-group">
@@ -75,7 +76,7 @@
             <input type="text" class="form-control" ng-model="movie.heroines" placeholder="Heroine/Heroines">
           </div>
         </div>
-        <button class="btn btn-primary pull-right" ng-click="submit()">Submit</button>
+        <button class="btn btn-primary pull-right" ng-click="submit(movie)">Submit</button>
       </form>
     </div>
   </div>

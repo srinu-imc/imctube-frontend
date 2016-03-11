@@ -4,7 +4,7 @@ function AddArtistCtrl($http, $scope, toastr) {
     if(angular.isDefined(artist.id)) {
       $http.put("/imctube/webapi/artists/" + artist.id , artist)
       .then(function(data) {
-        toastr.success("Successfully added artist to database!!");
+        toastr.success("Successfully updated artist info!!");
         // Success nothing to do here
       }, function(data) {
         toastr.error("Failed to add artist to database. Please Re-enter!!");
@@ -13,7 +13,7 @@ function AddArtistCtrl($http, $scope, toastr) {
     } else {
       $http.post("/imctube/webapi/artists", artist)
       .then(function(data) {
-        toastr.success("Successfully updated artist info");
+        toastr.success("Successfully added artist to database");
         // Success nothing to do here
       }, function(data) {
         toastr.error("Failed to update artist info, Please Re-enter!!");
