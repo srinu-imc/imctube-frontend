@@ -1,5 +1,6 @@
 function MovieListCtrl($http, $routeParams, $scope) {
   $scope.movies = [];
+  $scope.limit = 30;
 
   if(angular.isDefined($routeParams.artistId)) {
     $http.get('/imctube/webapi/artists/' + $routeParams.artistId + '/movies').success(function(data) {
@@ -17,6 +18,10 @@ function MovieListCtrl($http, $routeParams, $scope) {
       console.log("Required parameter artist is missing");
     }
     return url;
+  }
+
+  $scope.expand = function() {
+    $scope.limit = $scope.limit + 30;
   }
 };
 

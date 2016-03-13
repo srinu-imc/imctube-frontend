@@ -1,5 +1,6 @@
 function ClipifyListCtrl($http, $routeParams, $scope, $window) {
   $scope.movies = [];
+  $scope.limit = 30;
 
   $http.get('/imctube/webapi/clipify').success(function(movies) {
     $scope.movies = movies;
@@ -14,6 +15,10 @@ function ClipifyListCtrl($http, $routeParams, $scope, $window) {
         console.log("Failed with error " + error);
       });
   };
+
+  $scope.expand = function() {
+    $scope.limit = $scope.limit + 30;
+  }
 };
 
 ClipifyListCtrl.$inject = ['$http', '$routeParams', '$scope', '$window'];

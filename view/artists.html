@@ -1,6 +1,6 @@
 <div class="container">
   <ul class="pagination">
-    <li class="col-md-2 nopadding" ng-repeat="artist in artists">
+    <li class="col-md-2 nopadding" ng-repeat="artist in artists | limitTo : limit">
       <div class="panel panel-primary">
         <a href="#artists/{{artist.id}}/movies">
           <img class="img-responsive" ng-src="{{getUrl(artist)}}" ng-alt="Description"></img>
@@ -9,4 +9,7 @@
       </div>
     </li>
   </ul>
+  <div class="container-fluid">
+    <button type="button" ng-show="limit < artists.length" class="btn btn-primary btn-block" ng-click="expand()">Load More</button>
+</div>
 </div>

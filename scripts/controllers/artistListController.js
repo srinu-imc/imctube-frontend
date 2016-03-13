@@ -1,5 +1,6 @@
 function ArtistListCtrl($http, $scope) {
   $scope.artists = [];
+  $scope.limit = 30;
 
   $http.get('/imctube/webapi/artists?onlyHaveMovies=true').success(function(data) {
     $scope.artists = data;
@@ -11,6 +12,10 @@ function ArtistListCtrl($http, $scope) {
     } else {
       return "resources/artists/noprofile.jpg";
     }
+  }
+
+  $scope.expand = function() {
+    $scope.limit = $scope.limit + 30;
   }
 };
 

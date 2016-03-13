@@ -1,6 +1,6 @@
 <div class="container">
   <ul class="pagination">
-    <li class="col-md-2 nopadding" ng-repeat="movie in movies">
+    <li class="col-md-2 nopadding" ng-repeat="movie in movies | limitTo : limit">
       <div class="panel panel-primary">
         <a href="{{getUrl(movie.id)}}">
           <img class="img-responsive" ng-src="http://img.youtube.com/vi/{{movie.videoId}}/mqdefault.jpg"></img>
@@ -9,4 +9,7 @@
       </div>
     </li>
   </ul>
+  <div class="container-fluid">
+    <button type="button" ng-show="limit < movies.length" class="btn btn-primary btn-block" ng-click="expand()">Load More</button>
+  </div>
 </div>

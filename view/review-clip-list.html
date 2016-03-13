@@ -1,7 +1,7 @@
 <div class="container" ng-controller="ReviewClipListCtrl">
   <div>
     <ul class="pagination">
-      <li class="col-md-2 nopadding" ng-repeat="clip in clips">
+      <li class="col-md-2 nopadding" ng-repeat="clip in clips | limitTo : limit">
         <div class="panel panel-primary">
           <a href="#review/clips/{{clip.clipId}}">
           <img class="img-responsive" ng-src="{{clip.thumbnails[0]}}"></img>
@@ -10,5 +10,8 @@
         </div>
       </li>
     </ul>
+    <div class="container-fluid">
+      <button type="button" ng-show="limit < clips.length" class="btn btn-primary btn-block" ng-click="expand()">Load More</button>
+    </div>
   </div>
 </div>
