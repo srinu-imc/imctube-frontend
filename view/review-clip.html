@@ -1,79 +1,80 @@
 <div class="container">
   <div class="row"  ng-controller='ReviewClipPlayerCtrl'>
-		<div class="col-md-6 nopadding">
-		  <div class="embed-responsive embed-responsive-16by9">
-	        <youtube-video video-id="clipToPlay.videoId" player="player"></youtube-video>
-	      </div>
+    <div class="col-md-6 nopadding">
+      <div class="embed-responsive embed-responsive-16by9">
+          <youtube-video video-id="clipToPlay.videoId" player="player"></youtube-video>
+        </div>
 
-	      <div class="row">
-			  <div class="container-fluid" >
-			    <div class="btn-group">
-			      <button class="btn btn-primary" ng-click="pauseVideo(player)">pause</button>
-			      <button class="btn btn-primary" ng-click="playVideo(player)">play</button>
-			      <button class="btn btn-primary" ng-click="backward(player)">-5s</button>
-			      <button class="btn btn-primary" ng-click="forward(player)">+5s</button>
-			    </div>
-			  </div>
-			</div>
-		</div>
-		<div class="col-md-6">
-			<clip-artists></clip-artists>
-			<div>
-				<button ng-show="!isClipCut && !isPlayEnded(player)" class="btn btn-primary btn-block" ng-click="breakClip(player)">Break clip here</button>
+        <div class="row">
+        <div class="container-fluid" >
+          <div class="btn-group">
+            <button class="btn btn-primary" ng-click="pauseVideo(player)">pause</button>
+            <button class="btn btn-primary" ng-click="playVideo(player)">play</button>
+            <button class="btn btn-primary" ng-click="backward(player)">-5s</button>
+            <button class="btn btn-primary" ng-click="forward(player)">+5s</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <clip-artists></clip-artists>
+      <div>
+        <button ng-show="!isClipCut && !isPlayEnded(player)" class="btn btn-primary btn-block" ng-click="breakClip(player)">Break clip here</button>
 
-				<div ng-show="isClipCut">
-					<label>
-				    <input type="radio" ng-model="option.selectedOption" value="newClip">
-				    Create new clip till here
-				  </label><br/>
-				  <label>
-				    <input type="radio" ng-model="option.selectedOption" value="mergeWithEarlierClip">
-				    Merge with earlier clip till now
-				  </label><br/>
-				</div>
+        <div ng-show="isClipCut">
+          <label>
+            <input type="radio" ng-model="option.selectedOption" value="newClip">
+            Create new clip till here
+          </label><br/>
+          <label>
+            <input type="radio" ng-model="option.selectedOption" value="mergeWithEarlierClip">
+            Merge with earlier clip till now
+          </label><br/>
+        </div>
 
-				<div ng-show="isPlayEnded(player)">
-					<label>
-				    <input type="radio" ng-model="option.selectedOption" value="mergeWithEarlierClip">
-				    Merge with earlier clip
-				  </label><br/>
-				  <label>
-				    <input type="radio" ng-model="option.selectedOption" value="mergeWithNextClip">
-				    Merge with next clip from now
-				  </label><br/>
-				  <label>
-				    <input type="radio" ng-model="option.selectedOption" value="markAsReviewed">
-				    Mark as reviewed
-				  </label><br/>
-				</div>
+        <div ng-show="isPlayEnded(player)">
+          <label>
+            <input type="radio" ng-model="option.selectedOption" value="mergeWithEarlierClip">
+            Merge with earlier clip
+          </label><br/>
+          <label>
+            <input type="radio" ng-model="option.selectedOption" value="mergeWithNextClip">
+            Merge with next clip from now
+          </label><br/>
+          <label>
+            <input type="radio" ng-model="option.selectedOption" value="markAsReviewed">
+            Mark as reviewed
+          </label><br/>
+        </div>
 
-				<div ng-show="option.selectedOption == 'markAsReviewed'" class="panel panel-primary">
-			  <div class="panel-heading">Review description of the clip</div>
-				  <div class="panel-body">
-				    <form class="form-horizontal">
-				      <label for="description" class="col-md-3 control-label">Description</label>
-				      <textarea ng-model="currentClip.description" class="col-md-9" rows=4></textarea>
-				    </form>
-				  </div>
-				</div>
+        <div ng-show="option.selectedOption == 'markAsReviewed'" class="panel panel-primary">
+        <div class="panel-heading">Review description of the clip</div>
+          <div class="panel-body">
+            <form class="form-horizontal">
+              <label for="description" class="col-md-3 control-label">Description</label>
+              <textarea ng-model="currentClip.description" class="col-md-9" rows=4></textarea>
+            </form>
+          </div>
+        </div>
 
-				<div ng-show="option.selectedOption == 'newClip' && isClipCut == true" class="panel panel-primary">
-			  <div class="panel-heading">Enter description for new clip here</div>
-				  <div class="panel-body">
-				    <form class="form-horizontal">
-				      <label for="description" class="col-md-3 control-label">Description</label>
-				      <textarea ng-model="newClip.description" class="col-md-9" rows=4></textarea>
-				    </form>
-				  </div>
-				</div>
+        <div ng-show="option.selectedOption == 'newClip' && isClipCut == true" class="panel panel-primary">
+        <div class="panel-heading">Enter description for new clip here</div>
+          <div class="panel-body">
+            <form class="form-horizontal">
+              <label for="description" class="col-md-3 control-label">Description</label>
+              <textarea ng-model="newClip.description" class="col-md-9" rows=4></textarea>
+            </form>
+          </div>
+        </div>
 
-				<!-- 
-					Must change the description when creating a new clip 
-					Delete thumbnails.
-				-->
-				<button ng-show="isClipCut || isPlayEnded(player)" class="btn btn-primary btn-block" ng-click="submitChange(player)">Submit</button>
-			</div>
-		  <!-- <clip-data></clip-data> -->
-		</div>
-	</div>
+        <clip-thumbnails></clip-thumbnails>
+        <!--
+          Must change the description when creating a new clip
+          Delete thumbnails.
+        -->
+        <button ng-show="isClipCut || isPlayEnded(player)" class="btn btn-primary btn-block" ng-click="submitChange(player)">Submit</button>
+      </div>
+      <!-- <clip-data></clip-data> -->
+    </div>
+  </div>
 </div>

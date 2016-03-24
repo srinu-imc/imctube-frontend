@@ -1,8 +1,8 @@
 <div class="container">
   <ul class="pagination">
-    <li class="col-md-2 nopadding" ng-repeat="artist in artists | limitTo : limit">
+    <li class="col-md-2 nopadding" ng-repeat="artist in artists | filter:search.text | limitTo : limit">
       <div class="panel panel-primary">
-        <a href="#artists/{{artist.id}}/movies">
+        <a ng-href="#artists/{{artist.id}}/movies" ng-click="search.text=''">
           <img class="img-responsive" ng-src="{{getUrl(artist)}}" ng-alt="Description"></img>
         </a>
         <p class="text-primary text-small text-center" style="overflow:hidden">{{artist.industryName}}</p>
@@ -11,5 +11,5 @@
   </ul>
   <div class="container-fluid">
     <button type="button" ng-show="limit < artists.length" class="btn btn-primary btn-block" ng-click="expand()">Load More</button>
-</div>
+  </div>
 </div>

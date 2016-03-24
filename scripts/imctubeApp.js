@@ -98,8 +98,14 @@ app.config(function($routeProvider, $authProvider, $stateProvider, $urlRouterPro
   $authProvider.signupUrl = "imctube/webapi/auth/signup";
 
   $authProvider.facebook({
-    clientId: '1691017817849603',
+    clientId: '1142674112432615',
+    //clientId: '1691017817849603',
     url: 'imctube/webapi/auth/facebook'
+  });
+
+  $authProvider.google({
+    clientId: '193687136528-76hsdchcjaktsvt26kph7qp70p62etrk.apps.googleusercontent.com',
+    url: 'imctube/webapi/auth/google'
   });
 
   function skipIfLoggedIn($q, $auth) {

@@ -64,6 +64,10 @@ angular.module('imctubeApp')
             $scope.currentPage -= 1;
           }
         }
+
+        $scope.deleteMe = function(clip) {
+          clip.thumbnails.splice(this.$index,1);
+        }
       },
       controllerAs: 'clipThumbnails'
     };

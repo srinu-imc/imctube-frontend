@@ -15,6 +15,21 @@
       <!-- Clip thumbnails goes here -->
       <div class="tab-pane"  id="thumbnails">
         <clip-thumbnails></clip-thumbnails>
+        <div class="panel panel-primary">
+          <div class="panel-heading">Describe what is happening in the clip with your own words</div>
+          <div class="panel-body">
+            <form class="form-horizontal">
+              <label for="description" class="col-md-3 control-label">Description</label>
+              <textarea ng-model="currentClip.description" class="col-md-9" rows=4></textarea>
+            </form>
+          </div>
+        </div>
+        <div ng-show="isLast5Min()" class="checkbox">
+          <label><input type="checkbox" ng-model="lastClipOfMovie">Is last clip of movie</label>
+        </div>
+        <div class="container-fluid" style="padding-right:0px;padding-left:0px">
+          <button type="button" class="btn btn-primary btn-block" ng-click="submitClip()">Submit Clip</button>
+        </div>
       </div>
     </div>
 

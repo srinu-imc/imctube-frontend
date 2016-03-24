@@ -1,8 +1,8 @@
 <div class="container">
   <ul class="pagination">
-    <li class="col-md-2 nopadding" ng-repeat="movie in movies | limitTo : limit">
+    <li class="col-md-2 nopadding" ng-repeat="movie in movies | filter:search.text | limitTo : limit">
       <div class="panel panel-primary">
-        <a href="{{getUrl(movie.id)}}">
+        <a ng-href="{{getUrl(movie.id)}}" ng-click="search.text=''">
           <img class="img-responsive" ng-src="http://img.youtube.com/vi/{{movie.videoId}}/mqdefault.jpg"></img>
         </a>
         <p class="text-primary text-small text-center" style="overflow:hidden">{{movie.name}}</p>
