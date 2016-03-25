@@ -13,7 +13,7 @@
       </li>
     </ul>
     <div class="container-fluid">
-      <button type="button" ng-show="limit < movies.length && movies.length !=1" class="btn btn-primary btn-block" ng-click="expand()">Load More</button>
+      <button type="button" ng-show="limit < (movies | filter:search.text).length && movies.length !=1" class="btn btn-primary btn-block" ng-click="expand()">Load More</button>
     </div>
   </div>
 </div>

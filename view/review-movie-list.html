@@ -1,7 +1,7 @@
 <div class="container" ng-controller="ReviewListCtrl">
   <div>
     <ul class="pagination">
-      <li class="col-md-2 nopadding" ng-repeat="movie in movies | limitTo : limit">
+      <li class="col-md-2 nopadding" ng-repeat="movie in movies | filter:search.text | limitTo : limit">
         <div class="panel panel-primary">
           <a href="#review/{{movie.id}}">
           <img class="img-responsive nopadding" ng-src="http://img.youtube.com/vi/{{movie.videoId}}/mqdefault.jpg" ng-alt="Description"></img></a>
@@ -10,7 +10,7 @@
       </li>
     </ul>
     <div class="container-fluid">
-      <button type="button" ng-show="limit < movies.length" class="btn btn-primary btn-block" ng-click="expand()">Load More</button>
+      <button type="button" ng-show="limit < (movies | filter:search.text).length" class="btn btn-primary btn-block" ng-click="expand()">Load More</button>
     </div>
   </div>
 </div>
