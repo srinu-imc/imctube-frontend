@@ -5,7 +5,7 @@
         <a ng-href="{{getUrl(movie.id)}}" ng-click="search.text=''">
           <img class="img-responsive" ng-src="http://img.youtube.com/vi/{{movie.videoId}}/mqdefault.jpg"></img>
         </a>
-        <p class="text-primary text-small text-center" style="overflow:hidden">{{movie.name}}</p>
+        <p class="text-primary text-small text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{movie.name}}</p>
       </div>
     </li>
   </ul>

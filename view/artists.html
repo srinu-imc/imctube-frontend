@@ -5,7 +5,7 @@
         <a ng-href="#artists/{{artist.id}}/movies" ng-click="search.text=''">
           <img class="img-responsive" ng-src="{{getUrl(artist)}}" ng-alt="Description"></img>
         </a>
-        <p class="text-primary text-small text-center" style="overflow:hidden">{{artist.industryName}}</p>
+        <p class="text-primary text-small text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{artist.industryName}}</p>
       </div>
     </li>
   </ul>
