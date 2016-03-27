@@ -4,9 +4,9 @@
       <li class="col-md-2 nopadding" ng-repeat="clip in clips | limitTo : limit">
         <div class="panel panel-primary">
           <a href="#review/clips/{{clip.clipId}}">
-          <img class="img-responsive" ng-src="{{clip.thumbnails[0]}}"></img>
-        </a>
-          <p class="text-primary text-small text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{clip.movieName}}</p>
+            <img class="img-responsive" ng-src="{{clip.thumbnails[0]}}"></img>
+            <p class="text-primary text-small text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{clip.movieName}}</p>
+          </a>
         </div>
       </li>
     </ul>
