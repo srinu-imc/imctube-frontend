@@ -7,7 +7,7 @@ function ReviewClipListCtrl($http, $routeParams, $scope, $window) {
   });
 
   $scope.expand = function() {
-    $scope.expand = $scope.expand + 30;
+    $scope.limit = $scope.limit + 30;
   }
 };
 
