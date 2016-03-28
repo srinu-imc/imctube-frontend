@@ -46,11 +46,16 @@
         <li data-ng-class="{'active' : isSet('addmovie')}" ng-click="setTab('addmovie')"><a href="#addmovie/">Add Movie</a></li>
         <li data-ng-class="{'active' : isSet('addartist')}" ng-click="setTab('addartist')"><a href="#addartist/">Add Artist</a></li>
       </ul>
+
       <ul class="nav navbar-nav">
-        <form class="nav-form">
-        <li><input type="text" class="form-control" style="padding-top:10px" ng-model="search.text" placeholder="Search"></li></form>
+        <li>
+          <form class="navbar-form" role="search">
+            <input type="text" class="form-control" placeholder="Search" ng-model="search.text">
+          </form>
+        </li>
       </ul>
-      <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
+
+    <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
         <li><a href="#login/">Login</a></li>
         <!-- <li><a href="#signup/">Sign up</a></li> -->
       </ul>
