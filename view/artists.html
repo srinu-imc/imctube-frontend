@@ -1,6 +1,6 @@
 <div class="container">
   <ul class="pagination">
-    <li class="col-md-2 nopadding" ng-repeat="artist in artists | filter:search.text | limitTo : limit">
+    <li class="col-xs-4 col-md-2 nopadding" ng-repeat="artist in artists | filter:search.text | limitTo : limit">
       <div class="panel panel-primary">
         <a ng-href="#artists/{{artist.id}}/movies" ng-click="search.text=''">
           <img class="img-responsive" ng-src="{{getUrl(artist)}}" ng-alt="Description"></img>

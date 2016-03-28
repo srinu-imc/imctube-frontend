@@ -1,8 +1,8 @@
 resources/movies/*
 resources/actors/*
 resources/singers/*
-resources/artists*
-resources/movies*
+resources/artists/*
+resources/movies/*
 resources/original/*
 node_modules/*
 dest/*
