@@ -12,9 +12,11 @@ function ReviewClipCtrl($http, $routeParams, $scope, $window) {
 
       $http.get('/imctube/webapi/review/' + currentClip.clipId + '/prev')
         .success(function(prevClip) {
-          if(angular.isDefined(prevClip)) {
+          $scope.prevClip = prevClip;
+          if(angular.isDefined($scope.prevClip.thumbnails)) {
             $scope.prevClip = prevClip;
           } else {
+            $scope.prevClip = {};
             $scope.prevClip.thumbnails = [];
           }
         });

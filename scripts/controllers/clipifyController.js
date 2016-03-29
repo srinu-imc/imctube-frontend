@@ -39,6 +39,7 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval, $window) {
           $scope.currentClip.startTime = $scope.prevClip.endTime;
         } else {
           $scope.currentClip.startTime = 0.01;
+          $scope.prevClip = {};
           $scope.prevClip.thumbnails = [];
         }
       });
