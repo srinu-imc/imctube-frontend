@@ -1,27 +1,39 @@
 angular.module('imctubeApp')
   .directive("clipThumbnails", function() {
     return {
-      restrict: 'E',
+      restrict: 'AEC',
+      scope: {
+        clip: '=',
+        movie: '=',
+        prevClip: '='
+      },
       templateUrl: 'view/clip-thumbnail-capture.html',
-      controller: function($scope) {
-        $scope.currentPage = 0;
-        $scope.pageSize = 5;
-        $scope.totalPages = -1;
+      link: function(scope, elem, attrs) {
+        scope.pageSize = 5;
+        scope.totalPages = -1;
 
-        $scope.init = function(totalImages, prevClip) {
-          var pages = totalImages / $scope.pageSize;
-          if (totalImages % $scope.pageSize === 0) {
-            $scope.totalPages = totalImages / $scope.pageSize;
+        scope.init = function() {
+          // Initialize only once
+          if(angular.isDefined(scope.currentPage)) {
+            return;
+          }
+          if(!angular.isDefined(scope.movie.thumbnailCount) || !angular.isDefined(scope.prevClip.thumbnails)) {
+            return;
+          }
+          var totalImages = scope.movie.thumbnailCount;
+          var pages = totalImages / scope.pageSize;
+          if (scope.movie.thumbnailCount % scope.pageSize === 0) {
+            scope.totalPages = totalImages / scope.pageSize;
           }  else {
-            $scope.totalPages = totalImages/ $scope.pageSize + 1;
+            scope.totalPages = totalImages/ scope.pageSize + 1;
           }
 
-          if(angular.isDefined(prevClip)) {
-            $scope.currentPage = $scope.getLastSelectedIndex(prevClip) / $scope.pageSize;
+          if(angular.isDefined(scope.prevClip)) {
+            scope.currentPage = scope.getLastSelectedIndex(scope.prevClip) / scope.pageSize;
           }
         }
 
-        $scope.getLastSelectedIndex = function (lastClip) {
+        scope.getLastSelectedIndex = function (lastClip) {
           var re = /.*thumbnails-(\d*).jpeg/i;
           var max = 0;
           if(angular.isDefined(lastClip.thumbnails)) {
@@ -34,41 +46,45 @@ angular.module('imctubeApp')
           return max;  
         }
 
-        $scope.isFirstPage = function() {
-          return $scope.currentPage === 0;
+        scope.isFirstPage = function() {
+          scope.init();
+          return scope.currentPage === 0;
         }
 
-        $scope.isLastPage = function() {
-          return $scope.currentPage === $scope.totalPages - 1;
+        scope.isLastPage = function() {
+          scope.init();
+          return scope.currentPage === scope.totalPages - 1;
         }
 
-        $scope.select = function(thumbnail, clip) {
-          if(clip.thumbnails.indexOf(thumbnail) == -1) {
-            clip.thumbnails.push(thumbnail);
+        scope.select = function(thumbnail) {
+          scope.init();
+          if(scope.clip.thumbnails.indexOf(thumbnail) == -1) {
+            scope.clip.thumbnails.push(thumbnail);
           }
         }
 
-        $scope.nextPage = function(movie, prevClip) {
-          $scope.totalPages = movie.thumbnailCount / $scope.pageSize;
-          var lastPage = $scope.getLastSelectedIndex(prevClip) / $scope.pageSize;
-          if(lastPage > $scope.currentPage) {
-            $scope.currentPage = lastPage;
+        scope.nextPage = function() {
+          scope.init();
+          scope.totalPages = scope.movie.thumbnailCount / scope.pageSize;
+          var lastPage = scope.getLastSelectedIndex(scope.prevClip) / scope.pageSize;
+          if(lastPage > scope.currentPage) {
+            scope.currentPage = lastPage;
           }
-          if($scope.currentPage < $scope.totalPages - 1) {
-            $scope.currentPage += 1;
-          }
-        }
-
-        $scope.prevPage = function() {
-          if($scope.currentPage > 0) {
-            $scope.currentPage -= 1;
+          if(scope.currentPage < scope.totalPages - 1) {
+            scope.currentPage += 1;
           }
         }
 
-        $scope.deleteMe = function(clip) {
-          clip.thumbnails.splice(this.$index,1);
+        scope.prevPage = function() {
+          scope.init();
+          if(scope.currentPage > 0) {
+            scope.currentPage -= 1;
+          }
         }
-      },
-      controllerAs: 'clipThumbnails'
+
+        scope.deleteMe = function() {
+          scope.clip.thumbnails.splice(this.$index,1);
+        }
+      }
     };
   });

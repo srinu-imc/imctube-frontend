@@ -39,6 +39,7 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval, $window) {
           $scope.currentClip.startTime = $scope.prevClip.endTime;
         } else {
           $scope.currentClip.startTime = 0.01;
+          $scope.prevClip.thumbnails = [];
         }
       });
 
@@ -55,7 +56,7 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval, $window) {
   });
 
   $scope.isLast5Min = function() {
-    if(angular.isDefined($scope.movie.player.getDuration)) {
+    if(angular.isDefined($scope.movie.player) && angular.isDefined($scope.movie.player.getDuration)) {
       return (($scope.movie.player.getDuration() - $scope.currentClip.startTime) < 300.0);
     } else {
       return false;
