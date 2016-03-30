@@ -10,7 +10,7 @@ function ArtistListCtrl($http, $scope) {
     if(angular.isDefined(artist.thumbnail)) {
       return artist.thumbnail;
     } else {
-      return "resources/artists/noprofile.jpg";
+      return "https://s3.amazonaws.com/imctube/artists/noprofile.jpg";
     }
   }
 

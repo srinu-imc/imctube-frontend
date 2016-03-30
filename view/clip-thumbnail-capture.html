@@ -10,7 +10,7 @@
        <li class="pull-right nopadding"><a class="btn" href ng-disabled="isFirstPage()" ng-click="prevPage()">&laquo;</a></li>
       </div>
       <li class="col-sm-2 nopadding" ng-repeat="i in [] | range: movie.thumbnailCount | pagination : currentPage * pageSize | limitTo: pageSize">
-    <img class="img-responsive nopadding" ng-click="select('resources/movies/' + movie.videoId + '/thumbnails-' + i + '.jpeg', clip)" ng-src="resources/movies/{{movie.videoId}}/thumbnails-{{i}}.jpeg"></img>
+    <img class="img-responsive nopadding" ng-click="select('https://s3.amazonaws.com/imctube/movies/' + movie.videoId + '/thumbnails-' + i + '.jpeg', clip)" ng-src="https://s3.amazonaws.com/imctube/movies/{{movie.videoId}}/thumbnails-{{i}}.jpeg"></img>
       </li>
       <div class="col-sm-1">
         <li class="pull-left no-padding"><a class="btn" href ng-disabled="isLastPage()" ng-click="nextPage()">&raquo;</a></li>
