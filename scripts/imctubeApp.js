@@ -3,9 +3,9 @@ var app = angular.module('imctubeApp', ['ngResource', 'ngMessages', 'ngAnimate',
 app.config(function($routeProvider, $authProvider, $stateProvider, $urlRouterProvider) {
   $routeProvider
     .when("/", {
-      templateUrl: 'view/artists.html',
-      controller: 'ArtistListCtrl',
-      controllerAs: 'artistsCtrl'
+      templateUrl: 'view/clips.html',
+      controller: 'ClipListCtrl',
+      controllerAs: 'clipsCtrl'
     })
 
     .when("/login", {
@@ -29,7 +29,7 @@ app.config(function($routeProvider, $authProvider, $stateProvider, $urlRouterPro
       controller: 'LogoutCtrl'
     })
 
-    .when("/artists/", {
+    .when("/artists", {
       templateUrl: 'view/artists.html',
       controller: 'ArtistListCtrl',
       controllerAs: 'artistsCtrl'
@@ -42,9 +42,9 @@ app.config(function($routeProvider, $authProvider, $stateProvider, $urlRouterPro
     })
 
     .when("/artists/:artistId/movies/:movieId/clips", {
-      templateUrl: 'view/clips.html',
-      controller: 'ClipListCtrl',
-      controllerAs: 'clipsCtrl'
+      templateUrl: 'view/three-click-clips.html',
+      controller: 'ThreeClickClipListCtrl',
+      controllerAs: 'threeClickClipsCtrl'
     })
 
     .when("/clips/:clipId", {
@@ -99,7 +99,7 @@ app.config(function($routeProvider, $authProvider, $stateProvider, $urlRouterPro
 
   $authProvider.facebook({
     clientId: '1142674112432615',
-    //clientId: '1691017817849603',
+    // (local) clientId: '1691017817849603',
     url: 'imctube/webapi/auth/facebook'
   });
 

@@ -36,9 +36,14 @@
   </head>
 
   <body ng-controller="ImctubeCtrl">
+    <div class="container-fluid">
+    <div class="container">
     <div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top">
       <ul class="nav navbar-nav">
         <li><a href="#/">imctube</a></li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li><a href="#artists/">3clicks</a></li>
       </ul>
       <ul ng-if="isAuthenticated()" class="nav navbar-nav hidden-xs">
         <li data-ng-class="{'active' : isSet('clipify')}" ng-click="setTab('clipify')"><a href="#clipify/">Clipify</a></li>
@@ -47,21 +52,15 @@
         <li data-ng-class="{'active' : isSet('addartist')}" ng-click="setTab('addartist')"><a href="#addartist/">Add Artist</a></li>
       </ul>
 
-      <ul class="nav navbar-nav">
-        <li>
-          <form class="navbar-form" role="search">
-            <input type="text" class="form-control" placeholder="Search" ng-model="search.text">
-          </form>
-        </li>
-      </ul>
-
-    <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
+      <ul ng-if="!isAuthenticated()" class="nav navbar-nav pull-right">
         <li><a href="#login/">Login</a></li>
         <!-- <li><a href="#signup/">Sign up</a></li> -->
       </ul>
       <ul ng-if="isAuthenticated()" class="nav navbar-nav pull-right">
         <li><a href="#logout/">Logout</a></li>
       </ul>
+    </div>
+    </div>
     </div>
     <div ng-view></div>
     <!-- bootstrap related js -->

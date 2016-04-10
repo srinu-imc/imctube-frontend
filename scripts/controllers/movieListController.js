@@ -2,6 +2,7 @@ function MovieListCtrl($http, $routeParams, $scope) {
   $scope.movies = [];
   $scope.limit = 30;
 
+
   if(angular.isDefined($routeParams.artistId)) {
     $http.get('/imctube/webapi/artists/' + $routeParams.artistId + '/movies').success(function(data) {
       $scope.movies = data;

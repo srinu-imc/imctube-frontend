@@ -1,12 +1,31 @@
 <div class="container">
+  <div class="row" ng-controller='TypeAheadCtrl'>
+    <div class="col-md-7" ng-show="searchArtist.industryName">
+      <p class="text-danger text-center"><strong>{{searchArtist.industryName}}'s most viewed movie clips</strong></p>
+    </div>
+    <div class="col-md-5 pull-right">
+      <div class="col-md-10">
+        <div class="form-group">
+          <typeahead items="items" prompt="Filter by artist" artist="industryName" url="thumbnail" model="artist"></typeahead>
+        </div>
+      </div>
+      <div class="col-md-2 nopadding">
+         <button type="submit" class="btn btn-default" ng-click="loadClips(artist); artist = {}">Search</button>
+      </div>
+    </div>
+  </div>
   <ul class="pagination">
     <li class="col-xs-6 col-md-2 nopadding" ng-repeat="clip in clips">
       <div class="panel panel-primary">
         <a href="#clips/{{clip.clipId}}">
           <img class="img-responsive" ng-src="{{clip.thumbnails[0]}}"></img>
         </a>
-        <p class="text-primary text-small text-center" style="overflow:hidden">{{clip.movieName}}</p>
+        <p class="text-primary text-small text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{clip.movieName}}</p>
       </div>
     </li>
   </ul>
+  <div class="container-fluid">
+    <button type="button" ng-show="!isLast" class="btn btn-primary btn-block" ng-click="loadNext()">Load More</button>
+  </div>
+</div>
 </div>
