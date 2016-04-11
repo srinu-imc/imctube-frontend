@@ -43,7 +43,7 @@ angular.module('imctubeApp')
           } else {
             return 0;
           }
-          return max;  
+          return max;
         }
 
         scope.isFirstPage = function() {
@@ -59,7 +59,9 @@ angular.module('imctubeApp')
         scope.select = function(thumbnail) {
           scope.init();
           if(scope.clip.thumbnails.indexOf(thumbnail) == -1) {
-            scope.clip.thumbnails.push(thumbnail);
+            if(scope.clip.thumbnails.length < 8) {
+              scope.clip.thumbnails.push(thumbnail);
+            }
           }
         }
 

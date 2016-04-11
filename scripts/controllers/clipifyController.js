@@ -64,12 +64,20 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval, $window) {
     }
   };
 
+  $scope.isValidClip = function() {
+    if($scope.currentClip.thumbnails.length != 0 && ($scope.currentClip.isComedy || $scope.currentClip.isSong || $scope.currentClip.isFight || $scope.currentClip.isTitles || $scope.currentClip.isClimaxScene)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   $scope.submitClip =  function() {
     delete $scope.currentClip.artists;
-    console.log("is last clip of movie " + $scope.lastClipOfMovie);
     $scope.currentClip.movieId = $scope.movie.id;
     $scope.currentClip.movieName = $scope.movie.name;
     $scope.currentClip.videoId = $scope.movie.videoId;
+    console.log($scope.currentClip);
     $http.post('/imctube/webapi/clipify/' + $scope.movie.id + '/clips?isLastClip=' + $scope.lastClipOfMovie, $scope.currentClip)
         .then(function(data) {
         }, function(data) {
