@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" ng-controller='TypeAheadCtrl'>
     <div class="col-md-7" ng-show="searchArtist.industryName">
-      <p class="text-danger text-center"><strong>{{searchArtist.industryName}}'s most viewed movie clips</strong></p>
+      <p class="text-danger text-center"><strong>{{searchArtist.industryName}}'s most viewed movie clips <a href ng-click="refresh()">x</a></strong></p>
     </div>
     <div class="col-md-5 pull-right">
       <div class="col-md-10">

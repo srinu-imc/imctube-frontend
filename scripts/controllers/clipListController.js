@@ -38,6 +38,18 @@ function ClipListCtrl($http, $scope, $routeParams) {
       $scope.clips = data;
     });
   }
+
+  $scope.refresh = function() {
+    $scope.page = 0;
+    $scope.isLast = false;
+    $scope.searchArtist = {};
+    $http.get('/imctube/webapi/clips?page=' + $scope.page).success(function(data) {
+      if(data.length < 30) {
+        $scope.isLast = true;
+      }
+      $scope.clips = data;
+    });
+  }
 };
 
 ClipListCtrl.$inject = ['$http', '$scope', '$routeParams'];
