@@ -65,7 +65,7 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval, $window) {
   };
 
   $scope.isValidClip = function() {
-    if($scope.currentClip.thumbnails.length != 0 && ($scope.currentClip.isComedy || $scope.currentClip.isSong || $scope.currentClip.isFight || $scope.currentClip.isTitles || $scope.currentClip.isClimaxScene)) {
+    if($scope.currentClip.thumbnails.length != 0 && ($scope.currentClip.comedy || $scope.currentClip.song || $scope.currentClip.fight || $scope.currentClip.titles || $scope.currentClip.climaxScene)) {
       return true;
     } else {
       return false;
