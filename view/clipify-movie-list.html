@@ -2,6 +2,13 @@
   <div ng-show="movies.length == 1">
      <button type="button" class="btn btn-primary btn-block" ng-click="chooseAnother()">Choose Another Movie</button>
   </div>
+  <div class="row">
+    <div ng-show="movies.length > 1" class="col-md-4 pull-right">
+      <form role="search">
+        <input type="text" class="form-control" placeholder="Search movie click to clipify" ng-model="search.text">
+      </form>
+    </div>
+  </div>
   <div>
     <ul class="pagination">
       <li class="col-md-2 nopadding" ng-repeat="movie in movies | hasthumbnails | filter: search.text | limitTo : limit">

@@ -12,6 +12,7 @@ angular.module('imctubeApp')
           $scope.clipEndTimeCaptured = true;
           player.pauseVideo();
           if($scope.isValid(clip)) {
+            $scope.clipEndTimeCaptured = false;
             $('#rootwizard').find("a[href*='thumbnails']").trigger('click');
           } else {
             toastr.warning("Please select artists/Enter clip description");
@@ -31,6 +32,7 @@ angular.module('imctubeApp')
         };
 
         $scope.moveToThumbnailCapture = function(clip) {
+          $scope.clipEndTimeCaptured = false;
           $('#rootwizard').find("a[href*='thumbnails']").trigger('click');
         }
       },

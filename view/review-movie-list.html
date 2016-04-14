@@ -1,4 +1,11 @@
 <div class="container" ng-controller="ReviewListCtrl">
+  <div class="row">
+    <div ng-show="movies.length > 1" class="col-md-4 pull-right">
+      <form role="search">
+        <input type="text" class="form-control" placeholder="Search movie and click to review" ng-model="search.text">
+      </form>
+    </div>
+  </div>
   <div>
     <ul class="pagination">
       <li class="col-md-2 nopadding" ng-repeat="movie in movies | filter:search.text | limitTo : limit">

@@ -77,13 +77,11 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval, $window) {
     $scope.currentClip.movieId = $scope.movie.id;
     $scope.currentClip.movieName = $scope.movie.name;
     $scope.currentClip.videoId = $scope.movie.videoId;
-    console.log($scope.currentClip);
     $http.post('/imctube/webapi/clipify/' + $scope.movie.id + '/clips?isLastClip=' + $scope.lastClipOfMovie, $scope.currentClip)
         .then(function(data) {
         }, function(data) {
           console.log("Failed" + data);
         });
-
     $scope.prevClip = $scope.currentClip;
     $scope.currentClip = {
       artists : [],
