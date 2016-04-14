@@ -1,4 +1,4 @@
-function ClipifyCtrl($http, $routeParams, $route, $scope, $interval, $window) {
+function ClipifyCtrl($http, $routeParams, $route, $scope, $interval, $window, toastr) {
   $scope.movie = {};
   $scope.lastClipOfMovie = false;
   $scope.currentClip = {
@@ -80,7 +80,8 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval, $window) {
     $http.post('/imctube/webapi/clipify/' + $scope.movie.id + '/clips?isLastClip=' + $scope.lastClipOfMovie, $scope.currentClip)
         .then(function(data) {
         }, function(data) {
-          console.log("Failed" + data);
+          toastr.error("Clipfiy control is revoked on this movie, refreshing page to get the control back");
+          $route.reload();
         });
     $scope.prevClip = $scope.currentClip;
     $scope.currentClip = {
@@ -102,5 +103,5 @@ function ClipifyCtrl($http, $routeParams, $route, $scope, $interval, $window) {
   };
 };
 
-ClipifyCtrl.$inject = ['$http', '$routeParams', '$route', '$scope', '$interval', '$window'];
+ClipifyCtrl.$inject = ['$http', '$routeParams', '$route', '$scope', '$interval', '$window', 'toastr'];
 angular.module('imctubeApp').controller('ClipifyCtrl', ClipifyCtrl);
