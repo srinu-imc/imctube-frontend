@@ -5,10 +5,8 @@ function ClipListCtrl($http, $scope, $routeParams) {
   $scope.searchArtist = {};
 
   $http.get('/imctube/webapi/clips?page=' + $scope.page).success(function(data) {
-    if(data.length < 30) {
-      $scope.isLast = true;
-    }
-    $scope.clips.push.apply($scope.clips, data);
+    $scope.isLast = !data.hasMoreClips;
+    $scope.clips.push.apply($scope.clips, data.clips);
   });
 
   $scope.loadNext = function() {
@@ -21,10 +19,8 @@ function ClipListCtrl($http, $scope, $routeParams) {
     }
 
     $http.get(query).success(function(data) {
-     if(data.length < 30) {
-      $scope.isLast = true;
-     }
-      $scope.clips.push.apply($scope.clips, data);
+      $scope.isLast = !data.hasMoreClips;
+      $scope.clips.push.apply($scope.clips, data.clips);
     });
   }
 
@@ -32,10 +28,8 @@ function ClipListCtrl($http, $scope, $routeParams) {
     $scope.page = 0;
     $scope.searchArtist = angular.copy(artist);
     $http.get('/imctube/webapi/artists/' + artist.id + '/clips?page=' + $scope.page).success(function(data) {
-      if(data.length < 30) {
-        $scope.isLast = true;
-      }
-      $scope.clips = data;
+      $scope.isLast = !data.hasMoreClips;
+      $scope.clips = data.clips;
     });
   }
 
@@ -44,10 +38,8 @@ function ClipListCtrl($http, $scope, $routeParams) {
     $scope.isLast = false;
     $scope.searchArtist = {};
     $http.get('/imctube/webapi/clips?page=' + $scope.page).success(function(data) {
-      if(data.length < 30) {
-        $scope.isLast = true;
-      }
-      $scope.clips = data;
+      $scope.isLast = !data.hasMoreClips;
+      $scope.clips = data.clips;
     });
   }
 };
