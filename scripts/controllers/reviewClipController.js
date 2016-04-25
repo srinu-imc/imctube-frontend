@@ -1,4 +1,4 @@
-function ReviewClipCtrl($http, $routeParams, $scope, $window) {
+function ReviewClipCtrl($http, $routeParams, $scope, $window, $interval) {
   $scope.movie = {};
   $scope.currentClip = {};
   $scope.prevClip = {};
@@ -44,6 +44,13 @@ function ReviewClipCtrl($http, $routeParams, $scope, $window) {
             });
       });
     });
+
+    $interval(function() {
+      if(angular.isDefined($scope.currentClip)) {
+        $scope.duration =
+          ($scope.currentClip.endTime - $scope.currentClip.startTime) * 1000;
+      }
+    }, 1000);
 
      $scope.breakClip = function(player) {
        $scope.newClip = angular.copy($scope.currentClip);
@@ -91,5 +98,5 @@ function ReviewClipCtrl($http, $routeParams, $scope, $window) {
     }
 };
 
-ReviewClipCtrl.$inject = ['$http', '$routeParams', '$scope', '$window'];
+ReviewClipCtrl.$inject = ['$http', '$routeParams', '$scope', '$window', '$interval'];
 angular.module('imctubeApp').controller('ReviewClipCtrl', ReviewClipCtrl);
