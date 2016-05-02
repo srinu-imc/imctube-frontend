@@ -1,0 +1,24 @@
+<div class="modal-header">
+  <h3 class="modal-title">Choose your rating for clip</h3>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-sm-4">
+      <img class="img-responsive" ng-src="{{clip.thumbnails[0]}}"></img>
+    </div>
+    <div class="col-sm-8">
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label for="rating" class="col-sm-4 control-label">Rating</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" ng-model="rating" placeholder="Rating">
+          </div>
+        </div>
+      </form>   
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+  <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+</div>

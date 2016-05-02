@@ -5,8 +5,10 @@
         <div class="panel panel-primary">
           <a href="#review/clips/{{clip.clipId}}">
             <img class="img-responsive" ng-src="{{clip.thumbnails[0]}}"></img>
-            <p class="text-primary text-small text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{clip.movieName}}</p>
           </a>
+          <p class="text-primary text-small text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{clip.movieName}}
+          <span class="btn btn-warning btn-sm pull-right" ng-click=open(clip)><strong>P</strong><span>
+          </p>
         </div>
       </li>
     </ul>

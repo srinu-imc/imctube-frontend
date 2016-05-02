@@ -1,4 +1,4 @@
-var app = angular.module('imctubeApp', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'ui.router', 'ngRoute', 'satellizer', 'youtube-embed']);
+var app = angular.module('imctubeApp', ['ngResource', 'ngMessages', 'ngAnimate', 'toastr', 'ui.router', 'ngRoute', 'satellizer', 'youtube-embed', 'ui.bootstrap']);
 
 app.config(function($routeProvider, $authProvider, $stateProvider, $urlRouterProvider) {
   $routeProvider
