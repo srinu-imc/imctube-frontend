@@ -16,6 +16,18 @@ ul {
   margin-bottom: 0;
 }
 
+.video-time {
+  position : absolute;
+  background-color: #000;
+  padding: 0 4px;
+  font-weight: 500;
+  font-size: 11px;
+  display: inline-block;
+  color: #fff!important;
+  right: 2px;
+  bottom: 2px;
+}
+
 .list-inline > li {
   padding-left: 15px;
   padding-right: 15px;
@@ -419,7 +431,7 @@ ul {
 }
 
 .nopadding {
-	padding:1px;
+  padding:1px;
 }
 
 .pagination {

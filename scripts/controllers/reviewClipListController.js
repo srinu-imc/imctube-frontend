@@ -6,6 +6,10 @@ function ReviewClipListCtrl($http, $routeParams, $scope, $window, $uibModal) {
     $scope.clips = clips;
   });
 
+  $scope.getDuration = function(clip) {
+    return (clip.endTime - clip.startTime) * 1000;
+  }
+
   $scope.open = function(clip) {
     var modalInstance = $uibModal.open({
       templateUrl: 'view/clip-rating-model.html',
