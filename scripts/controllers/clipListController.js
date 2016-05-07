@@ -32,6 +32,10 @@ function ClipListCtrl($http, $scope, $routeParams, $q) {
     }
   }
 
+  $scope.getDuration = function(clip) {
+    return (clip.endTime - clip.startTime) * 1000;
+  }
+
   $scope.loadNext = function() {
     $scope.page = $scope.page + 1;
     var query = '';

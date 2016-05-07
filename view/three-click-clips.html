@@ -2,9 +2,14 @@
   <ul class="pagination">
     <li class="col-xs-6 col-md-2 nopadding" ng-repeat="clip in clips">
       <div class="panel panel-primary">
-        <a href="#clips/{{clip.clipId}}">
-          <img class="img-responsive" ng-src="{{clip.thumbnails[0]}}"></img>
-        </a>
+        <div style="position:relative">
+          <a href="#clips/{{clip.clipId}}">
+            <div style="display: block;position: relative;">
+              <span><img class="img-responsive" ng-src="{{clip.thumbnails[0]}}"></img></span>
+            </div>
+            <span class="video-time" aria-hidden="true">{{getDuration(clip) | date: 'mm:ss'}}</span>
+          </a>
+        </div>
         <p class="text-primary text-small text-center" style="overflow:hidden">{{clip.movieName}}</p>
       </div>
     </li>
