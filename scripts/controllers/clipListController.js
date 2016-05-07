@@ -36,6 +36,17 @@ function ClipListCtrl($http, $scope, $routeParams, $q) {
     return (clip.endTime - clip.startTime) * 1000;
   }
 
+  $scope.getTrimmedDescription = function(desc) {
+    console.log(desc);
+    if(!angular.isDefined(desc)) {
+      return " ".repeat(80);
+    } else if(desc.length < 80) {
+      return desc.concat(" ".repeat(80 - desc.length));
+    } else {
+      return desc.substring(0, 80);
+    }
+  }
+
   $scope.loadNext = function() {
     $scope.page = $scope.page + 1;
     var query = '';

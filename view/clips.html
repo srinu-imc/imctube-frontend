@@ -15,8 +15,8 @@
     </div>
   </div>
   <ul class="pagination">
-    <li class="col-xs-6 col-md-2 nopadding" ng-repeat="clip in clips">
-      <div class="panel panel-primary">
+    <li class="col-xs-6 col-md-3" ng-repeat="clip in clips">
+      <div class="panel panel-white">
         <div style="position:relative">
           <a href="#clips/{{clip.clipId}}">
             <div style="display: block;position: relative;">
@@ -25,7 +25,12 @@
             <span class="video-time" aria-hidden="true">{{getDuration(clip) | date: 'mm:ss'}}</span>
           </a>
         </div>
-        <p class="text-primary text-small text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{clip.movieName}}</p>
+        <span class="view-count">{{clip.viewCount}} Views</span>
+        <!-- <blockquote><pre style="color:white;background-color:#439ec9"> -->
+        <blockquote class="video-info">
+          <span class="movie-name">{{clip.movieName}}</span>
+          <pre class="video-des">{{getTrimmedDescription(clip.description)}}</pre>
+        </blockquote>
       </div>
     </li>
   </ul>
