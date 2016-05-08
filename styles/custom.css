@@ -53,6 +53,11 @@ ul {
   font-family : helvetica, arial, sans-serif;
   padding : 5px 0 0 0;
   word-wrap: break-word;
+  overflow: hidden;
+  line-height: 1.3em;
+  text-overflow: ellipsis;
+  max-height: 5.5em;
+  min-height: 5.5em;
 }
 
 .list-inline > li {
