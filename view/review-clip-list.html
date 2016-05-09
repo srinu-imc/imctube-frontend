@@ -1,7 +1,7 @@
 <div class="container" ng-controller="ReviewClipListCtrl">
   <div>
     <ul class="pagination">
-      <li class="col-md-2 nopadding" ng-repeat="clip in clips">
+      <li class="col-xs-6 col-md-3" ng-repeat="clip in clips">
         <div class="panel panel-primary">
           <div style="position: relative">
           <a href="#review/clips/{{clip.clipId}}">
@@ -13,9 +13,11 @@
              <span class="video-time" aria-hidden="true">{{getDuration(clip) | date: 'mm:ss'}}</span>
           </a>
           </div>
-          <p class="text-primary text-small text-center" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{clip.movieName}}
-          <span class="btn btn-warning btn-sm pull-right" ng-click=open(clip)><strong>P</strong><span>
-          </p>
+          <span class="view-count">{{clip.viewCount}} Views</span>
+          <blockquote class="video-info">
+            <p class="movie-name">{{clip.movieName}}</p>
+            <p class="video-des">{{clip.description}}</p>
+          </blockquote>
         </div>
       </li>
     </ul>
