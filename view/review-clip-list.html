@@ -15,7 +15,9 @@
           </div>
           <span class="view-count">{{clip.viewCount}} Views</span>
           <blockquote class="video-info">
-            <p class="movie-name">{{clip.movieName}}</p>
+            <p class="movie-name">{{clip.movieName}}
+            <span class="btn btn-warning btn-sm pull-right" ng-click=open(clip)><strong>P</strong><span>
+            </p>
             <p class="video-des">{{clip.description}}</p>
           </blockquote>
         </div>
